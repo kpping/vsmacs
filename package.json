@@ -3,7 +3,7 @@
     "displayName": "VSmacs",
     "description": "Emacs Key Bindings for Visual Studio Code. No Killring. No Fancy Things.",
     "version": "0.0.1",
-    "publisher": "Krittanan Pingclasai",
+    "publisher": "kpping",
     "engines": {
         "vscode": "^1.5.0"
     },

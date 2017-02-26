@@ -15,7 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.StartMarkMode
+    // DO: start markmode
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.StartMarkMode', 
@@ -30,7 +31,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.StopMarkMode
+    // DO: stop markmode
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.StopMarkMode', 
@@ -43,7 +45,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.MoveCursorX and vsmacs.MoveCursorXSelect
+    // DO: move cursor
     ['Up', 'Down', 'Left', 'Right', 'Home', 'End', 'Top', 'Bottom'].forEach((val) => {
         context.subscriptions.push(
             vscode.commands.registerCommand(
@@ -58,7 +61,8 @@ export function activate(context: vscode.ExtensionContext) {
         ));
     });
 
-    // TODO: write docs
+    // COMMAND: vsmacs.Copy
+    // DO: copy text in marking area to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.Copy', 
@@ -71,7 +75,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.Cut
+    // DO: cut text in marking area to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.Cut', 
@@ -84,7 +89,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.Paste
+    // DO: paste text from global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.Paste', 
@@ -97,7 +103,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
     ));
 
-    // TODO: write docs
+    // COMMAND: vsmacs.Kill
+    // DO: cut text from cursor to the end of line to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.Kill', 

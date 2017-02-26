@@ -1,9 +1,9 @@
 {
     "name": "vsmacs",
-    "displayName": "vsmacs",
-    "description": "Emacs Key Bindings for Visual Studio Code",
+    "displayName": "VSmacs",
+    "description": "Emacs Key Bindings for Visual Studio Code. No Killring. No Fancy Things.",
     "version": "0.0.1",
-    "publisher": "vsmacs",
+    "publisher": "VSmacs",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -23,49 +23,181 @@
         "commands": [],
         "keybindings": [
             {
-                "command": "actions.find",
-                "key": "ctrl+s"
+                "key": "alt+x",
+                "command": "workbench.action.showCommands"
             },
             {
-                "command": "editor.action.nextMatchFindAction",
+                "key": "ctrl+f",
+                "command": "vsmacs.MoveCursorRight",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "right",
+                "command": "vsmacs.MoveCursorRight",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+n",
+                "command": "vsmacs.MoveCursorDown",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "down",
+                "command": "vsmacs.MoveCursorDown",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+p",
+                "command": "vsmacs.MoveCursorUp",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "up",
+                "command": "vsmacs.MoveCursorUp",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+b",
+                "command": "vsmacs.MoveCursorLeft",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "left",
+                "command": "vsmacs.MoveCursorLeft",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "escape shift+,",
+                "command": "vsmacs.MoveCursorTop",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "escape shift+.",
+                "command": "vsmacs.MoveCursorBottom",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+e",
+                "command": "vsmacs.MoveCursorEnd",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "end",
+                "command": "vsmacs.MoveCursorEnd",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+a",
+                "command": "vsmacs.MoveCursorHome",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "home",
+                "command": "vsmacs.MoveCursorHome",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "alt+w",
+                "command": "vsmacs.Copy",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+w",
+                "command": "vsmacs.Cut",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "key": "ctrl+y",
+                "command": "vsmacs.Paste",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "key": "ctrl+k",
+                "command": "vsmacs.Kill",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "key": "ctrl+space",
+                "command": "vsmacs.StartMarkMode",
+                "when": "editorTextFocus"
+            },
+            {
+                "key": "ctrl+g",
+                "command": "vsmacs.StopMarkMode",
+                "when": "editorTextFocus && editorHasSelection"
+            },
+            {
+                "key": "escape escape",
+                "command": "vsmacs.StopMarkMode",
+                "when": "editorTextFocus && editorHasSelection"
+            },
+            {
                 "key": "ctrl+s",
+                "command": "actions.find"
+            },
+            {
+                "key": "ctrl+s",
+                "command": "editor.action.nextMatchFindAction",
                 "when": "findWidgetVisible"
             },
             {
-                "command": "workbench.action.files.save",
-                "key": "ctrl+x ctrl+s"
+                "key": "enter",
+                "command": "vsmacs.PreviousMatchFindAction_CloseFindWidget",
+                "when": "findWidgetVisible"
             },
             {
-                "command": "workbench.action.quickOpen",
-                "key": "ctrl+x ctrl+f"
+                "key": "ctrl+g",
+                "command": "closeFindWidget",
+                "when": "findWidgetVisible"
             },
             {
-                "command": "editor.action.triggerSuggest",
-                "key": "ctrl+'"
+                "key": "escape escape",
+                "command": "closeFindWidget",
+                "when": "findWidgetVisible"
             },
             {
-                "command": "editor.action.triggerParameterHints",
-                "key": "ctrl+;"
+                "key": "ctrl+x ctrl+s",
+                "command": "workbench.action.files.save"
             },
             {
-                "command": "workbench.action.splitEditor",
-                "key": "ctrl+x 3"
+                "key": "ctrl+x ctrl+w",
+                "command": "workbench.action.files.saveAs"
             },
             {
-                "command": "workbench.action.closeEditorsInGroup",
-                "key": "ctrl+x 0"
+                "key": "ctrl+x ctrl+f",
+                "command": "workbench.action.quickOpen"
             },
             {
-                "command": "workbench.action.closeActiveEditor",
-                "key": "ctrl+x ctrl+c"
+                "key": "ctrl+x ctrl+c",
+                "command": "workbench.action.closeActiveEditor"
             },
             {
-                "command": "workbench.action.navigateEditorGroups",
-                "key": "ctrl+x o"
+                "key": "ctrl+/",
+                "command": "undo"
             },
             {
-                "command": "undo",
-                "key": "ctrl+/"
+                "key": "ctrl+'",
+                "command": "editor.action.triggerSuggest"
+            },
+            {
+                "key": "ctrl+;",
+                "command": "editor.action.triggerParameterHints"
+            },
+            {
+                "key": "ctrl+x 3",
+                "command": "workbench.action.splitEditor"
+            },
+            {
+                "key": "ctrl+x 0",
+                "command": "workbench.action.closeEditorsInGroup"
+            },
+            {
+                "key": "ctrl+x 1",
+                "command": "workbench.action.closeOtherEditors"
+            },
+            {
+                "key": "ctrl+x o",
+                "command": "workbench.action.navigateEditorGroups"
             },
             {
                 "mac": "cmd+1",
@@ -127,11 +259,7 @@
                 "command": "removeSecondaryCursors",
                 "when": "editorHasMultipleSelections && editorTextFocus"
             },
-            {
-                "key": "ctrl+g",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
+
             {
                 "key": "ctrl+g",
                 "command": "closeBreakpointWidget",
@@ -198,11 +326,6 @@
                 "when": "editorTextFocus && !editorReadonly"
             },
             {
-                "key": "enter",
-                "command": "vsmacs.PreviousMatchFindAction_CloseFindWidget",
-                "when": "editorFocus && findWidgetVisible"
-            },
-            {
                 "key": "escape escape",
                 "command": "workbench.action.exitZenMode",
                 "when": "inZenMode"
@@ -216,11 +339,6 @@
                 "key": "escape escape",
                 "command": "removeSecondaryCursors",
                 "when": "editorHasMultipleSelections && editorTextFocus"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeFindWidget",
-                "when": "editorFocus && findWidgetVisible"
             },
             {
                 "key": "escape escape",
@@ -281,85 +399,6 @@
                 "key": "escape escape",
                 "command": "workbench.action.hideInterfaceOverview",
                 "when": "interfaceOverviewVisible"
-            },
-            {
-                "key": "alt+x",
-                "command": "workbench.action.showCommands"
-            },
-            {
-                "key": "ctrl+space",
-                "command": "vsmacs.StartMarkMode",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus && editorHasSelection"
-            },
-            {
-                "key": "escape escape",
-                "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus && editorHasSelection"
-            },
-            {
-                "key": "ctrl+f",
-                "command": "vsmacs.MoveCursorRight",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "vsmacs.MoveCursorDown",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "vsmacs.MoveCursorUp",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+b",
-                "command": "vsmacs.MoveCursorLeft",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "escape shift+,",
-                "command": "vsmacs.MoveCursorTop",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "escape shift+.",
-                "command": "vsmacs.MoveCursorBottom",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+e",
-                "command": "vsmacs.MoveCursorEnd",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+a",
-                "command": "vsmacs.MoveCursorHome",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "alt+w",
-                "command": "vsmacs.Copy",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+w",
-                "command": "vsmacs.Cut",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+y",
-                "command": "vsmacs.Paste",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+k",
-                "command": "vsmacs.Kill",
-                "when": "editorTextFocus && !editorReadonly"
             }
         ]
     },

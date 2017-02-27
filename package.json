@@ -1,7 +1,7 @@
 {
     "name": "vsmacs",
     "displayName": "VSmacs",
-    "description": "Emacs Key Bindings for Visual Studio Code. No Killring. No Fancy Things.",
+    "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
     "version": "0.0.1",
     "publisher": "kpping",
     "engines": {
@@ -259,7 +259,6 @@
                 "command": "removeSecondaryCursors",
                 "when": "editorHasMultipleSelections && editorTextFocus"
             },
-
             {
                 "key": "ctrl+g",
                 "command": "closeBreakpointWidget",
@@ -414,5 +413,11 @@
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
+    },
+    "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
+    "bugs": "https://github.com/kpping/vsmacs/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kpping/vsmacs.git"
     }
 }

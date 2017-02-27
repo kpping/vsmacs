@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.0.4]
+- fix bug cannot use `ctrl+n`, `ctrl+p`, `down`, `up` in widget
+
 ## [0.0.3]
 - update change log
 

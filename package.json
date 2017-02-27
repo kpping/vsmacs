@@ -2,7 +2,7 @@
     "name": "vsmacs",
     "displayName": "VSmacs",
     "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "kpping",
     "engines": {
         "vscode": "^1.5.0"
@@ -42,9 +42,49 @@
                 "when": "editorTextFocus"
             },
             {
+                "key": "ctrl+n",
+                "command": "workbench.action.quickOpenNavigateNext",
+                "when": "inQuickOpen"
+            },
+            {
+                "key": "ctrl+n",
+                "command": "selectNextSuggestion",
+                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+            },
+            {
+                "key": "ctrl+n",
+                "command": "showNextParameterHint",
+                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+            },
+            {
+                "key": "ctrl+n",
+                "command": "repl.action.historyNext",
+                "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
+            },
+            {
                 "key": "down",
                 "command": "vsmacs.MoveCursorDown",
                 "when": "editorTextFocus"
+            },
+            {
+                "key": "down",
+                "command": "workbench.action.quickOpenNavigateNext",
+                "when": "inQuickOpen"
+            },
+            {
+                "key": "down",
+                "command": "selectNextSuggestion",
+                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+            },
+            {
+                "key": "down",
+                "command": "showNextParameterHint",
+                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+            },
+            {
+                "key": "down",
+                "command": "repl.action.historyNext",
+                "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
             },
             {
                 "key": "ctrl+p",
@@ -52,9 +92,59 @@
                 "when": "editorTextFocus"
             },
             {
+                "key": "ctrl+p",
+                "command": "workbench.action.quickOpenNavigatePrevious",
+                "when": "inQuickOpen"
+            },
+            {
+                "key": "ctrl+p",
+                "command": "search.focus.nextInputBox",
+                "when": "inputBoxFocus && searchViewletVisible"
+            },
+            {
+                "key": "ctrl+p",
+                "command": "selectPrevSuggestion",
+                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+            },
+            {
+                "key": "ctrl+p",
+                "command": "showPrevParameterHint",
+                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+            },
+            {
+                "key": "ctrl+p",
+                "command": "repl.action.historyPrevious",
+                "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine"
+            },
+            {
                 "key": "up",
                 "command": "vsmacs.MoveCursorUp",
                 "when": "editorTextFocus"
+            },
+            {
+                "key": "up",
+                "command": "workbench.action.quickOpenNavigatePrevious",
+                "when": "inQuickOpen"
+            },
+            {
+                "key": "up",
+                "command": "search.focus.nextInputBox",
+                "when": "inputBoxFocus && searchViewletVisible"
+            },
+            {
+                "key": "up",
+                "command": "selectPrevSuggestion",
+                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+            },
+            {
+                "key": "up",
+                "command": "showPrevParameterHint",
+                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+            },
+            {
+                "key": "up",
+                "command": "repl.action.historyPrevious",
+                "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine"
             },
             {
                 "key": "ctrl+b",

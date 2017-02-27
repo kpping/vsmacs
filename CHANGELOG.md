@@ -1,7 +1,10 @@
 # Change Log
-All notable changes to the "vmacs" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.0.3]
+- update change log
 
-## [Unreleased]
-- Initial release
+## [0.0.2]
+- update read me, add repository to package.json
+
+## [0.0.1]
+- first release

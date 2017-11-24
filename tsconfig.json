@@ -1,13 +1,24 @@
 {
+    "compileOnSave": false,
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es6",
+        "target": "es2015",
+
+        "rootDir": ".",
         "outDir": "out",
+
+        "strict": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+
+        "removeComments": true,
+        "sourceMap": false,
+        "declaration": false,
+
+        "skipLibCheck": true,
         "lib": [
-            "es6"
-        ],
-        "sourceMap": true,
-        "rootDir": "."
+            "es2015"
+        ]
     },
     "exclude": [
         "node_modules",

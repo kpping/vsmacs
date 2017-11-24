@@ -1,5 +1,3 @@
-import { Position } from 'vscode';
-
 // compare with bitwise
 export enum STATE {
     MARK = 1 // 0001
@@ -12,15 +10,13 @@ export class VSmacsState {
     private static instance: VSmacsState;
 
     private state: STATE;
-    private currentCursorPostion: Position;
 
     private constructor() {
         this.state = 0;
     }
 
-    public startMarkMode(cursorPosition: Position) {
+    public startMarkMode() {
         this.state |= STATE.MARK;
-        this.currentCursorPostion = cursorPosition;
     }
 
     public isInMarkMode() {
@@ -29,7 +25,6 @@ export class VSmacsState {
 
     public stopMarkMode() {
         this.state &= ~STATE.MARK
-        this.currentCursorPostion = void(0);
     }
 
     public static getInstance() {

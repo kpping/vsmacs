@@ -21,9 +21,13 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand(
             'vsmacs.StartMarkMode',
             () => {
+                if (!vscode.window.activeTextEditor) {
+                    return;
+                }
+
                 let cursorPosition = vscode.window.activeTextEditor.selection.active;
 
-                VSmacsState.getInstance().startMarkMode(cursorPosition);
+                VSmacsState.getInstance().startMarkMode();
 
                 vscode.window.activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition);
 
@@ -116,9 +120,13 @@ export function activate(context: vscode.ExtensionContext) {
 
                     vscode.commands.executeCommand('vsmacs.Backspace')
                 } else {
+                    if (!vscode.window.activeTextEditor) {
+                        return;
+                    }
+
                     let prePosition = vscode.window.activeTextEditor.selection.active;
 
-                    let requireToggleWordWrap = vscode.workspace.getConfiguration('editor', null).get('wordWrap') !== 'off';
+                    let requireToggleWordWrap = vscode.workspace.getConfiguration('editor').get('wordWrap') !== 'off';
 
                     requireToggleWordWrap && vscode.commands.executeCommand('editor.action.toggleWordWrap');
 
@@ -138,7 +146,7 @@ export function activate(context: vscode.ExtensionContext) {
     ));
 
     // COMMAND: vsmacs.Backspace
-    // DO: cut text from cursor to the end of line to global (os) clipboard
+    // DO: normal backspace command + stopMarkMode
     context.subscriptions.push(
         vscode.commands.registerCommand(
             'vsmacs.Backspace',

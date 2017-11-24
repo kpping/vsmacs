@@ -2,10 +2,10 @@
     "name": "vsmacs",
     "displayName": "VSmacs",
     "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "publisher": "kpping",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.18.1"
     },
     "categories": [
         "Keymaps"
@@ -207,6 +207,11 @@
                 "when": "editorTextFocus && !editorReadonly"
             },
             {
+                "key": "backspace",
+                "command": "vsmacs.Backspace",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
                 "key": "ctrl+space",
                 "command": "vsmacs.StartMarkMode",
                 "when": "editorTextFocus"
@@ -214,12 +219,12 @@
             {
                 "key": "ctrl+g",
                 "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus && editorHasSelection"
+                "when": "editorTextFocus"
             },
             {
                 "key": "escape escape",
                 "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus && editorHasSelection"
+                "when": "editorTextFocus"
             },
             {
                 "key": "ctrl+s",
@@ -498,11 +503,11 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "@types/mocha": "^2.2.44",
+        "@types/node": "^8.0.53",
+        "mocha": "^4.0.1",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.8"
     },
     "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
     "bugs": "https://github.com/kpping/vsmacs/issues",

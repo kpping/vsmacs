@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { MarkMode } from './markmode';
+import { VSmacsState } from './state';
 
 export function activate(context: vscode.ExtensionContext) {
     // COMMAND: vsmacs.PreviousMatchFindAction_CloseFindWidget
@@ -7,7 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
     // WHY: when user hit `enter`, cursor move to the next text, so we have to move it back
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.PreviousMatchFindAction_CloseFindWidget', 
+            'vsmacs.PreviousMatchFindAction_CloseFindWidget',
             () => {
                 vscode.commands.executeCommand('editor.action.previousMatchFindAction');
 
@@ -19,11 +19,11 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: start markmode
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.StartMarkMode', 
+            'vsmacs.StartMarkMode',
             () => {
                 let cursorPosition = vscode.window.activeTextEditor.selection.active;
 
-                MarkMode.getInstance().startMarkMode(cursorPosition);
+                VSmacsState.getInstance().startMarkMode(cursorPosition);
 
                 vscode.window.activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition);
 
@@ -35,11 +35,11 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: stop markmode
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.StopMarkMode', 
+            'vsmacs.StopMarkMode',
             () => {
                 vscode.commands.executeCommand("cancelSelection");
 
-                MarkMode.getInstance().stopMarkMode();
+                VSmacsState.getInstance().stopMarkMode();
 
                 vscode.window.setStatusBarMessage("Quit", 1000);
             }
@@ -50,9 +50,9 @@ export function activate(context: vscode.ExtensionContext) {
     ['Up', 'Down', 'Left', 'Right', 'Home', 'End', 'Top', 'Bottom'].forEach((val) => {
         context.subscriptions.push(
             vscode.commands.registerCommand(
-                `vsmacs.MoveCursor${val}`, 
+                `vsmacs.MoveCursor${val}`,
                 () => {
-                    if (MarkMode.getInstance().isMarkMode()) {
+                    if (VSmacsState.getInstance().isInMarkMode()) {
                         vscode.commands.executeCommand(`cursor${val}Select`);
                     } else {
                         vscode.commands.executeCommand(`cursor${val}`);
@@ -65,11 +65,13 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: copy text in marking area to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.Copy', 
+            'vsmacs.Copy',
             () => {
-                MarkMode.getInstance().stopMarkMode();
+                VSmacsState.getInstance().stopMarkMode();
 
                 vscode.commands.executeCommand('editor.action.clipboardCopyAction');
+
+                vscode.commands.executeCommand("cancelSelection");
 
                 vscode.window.setStatusBarMessage("Copy", 1000);
             }
@@ -79,9 +81,9 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: cut text in marking area to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.Cut', 
+            'vsmacs.Cut',
             () => {
-                MarkMode.getInstance().stopMarkMode();
+                VSmacsState.getInstance().stopMarkMode();
 
                 vscode.commands.executeCommand('editor.action.clipboardCutAction');
 
@@ -93,9 +95,9 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: paste text from global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.Paste', 
+            'vsmacs.Paste',
             () => {
-                MarkMode.getInstance().stopMarkMode();
+                VSmacsState.getInstance().stopMarkMode();
 
                 vscode.commands.executeCommand('editor.action.clipboardPasteAction');
 
@@ -107,20 +109,43 @@ export function activate(context: vscode.ExtensionContext) {
     // DO: cut text from cursor to the end of line to global (os) clipboard
     context.subscriptions.push(
         vscode.commands.registerCommand(
-            'vsmacs.Kill', 
+            'vsmacs.Kill',
             () => {
-                MarkMode.getInstance().stopMarkMode();
+                if (VSmacsState.getInstance().isInMarkMode()) {
+                    vscode.commands.executeCommand('editor.action.clipboardCopyAction');
 
-                let cursorPosition = vscode.window.activeTextEditor.selection.active;
+                    vscode.commands.executeCommand('vsmacs.Backspace')
+                } else {
+                    let prePosition = vscode.window.activeTextEditor.selection.active;
 
-                vscode.commands.executeCommand('cursorEndSelect');
-                vscode.commands.executeCommand('editor.action.clipboardCopyAction');
+                    let requireToggleWordWrap = vscode.workspace.getConfiguration('editor', null).get('wordWrap') !== 'off';
 
-                vscode.window.activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition);
+                    requireToggleWordWrap && vscode.commands.executeCommand('editor.action.toggleWordWrap');
 
-                vscode.commands.executeCommand('deleteAllRight');
+                    vscode.commands.executeCommand('cursorEndSelect');
+
+                    vscode.commands.executeCommand('editor.action.clipboardCopyAction');
+
+                    vscode.window.activeTextEditor.selection = new vscode.Selection(prePosition, prePosition);
+
+                    vscode.commands.executeCommand('deleteAllRight');
+
+                    requireToggleWordWrap && vscode.commands.executeCommand('editor.action.toggleWordWrap');
+                }
 
                 vscode.window.setStatusBarMessage("Kill", 1000);
+            }
+    ));
+
+    // COMMAND: vsmacs.Backspace
+    // DO: cut text from cursor to the end of line to global (os) clipboard
+    context.subscriptions.push(
+        vscode.commands.registerCommand(
+            'vsmacs.Backspace',
+            () => {
+                vscode.commands.executeCommand('deleteLeft');
+
+                VSmacsState.getInstance().stopMarkMode();
             }
     ));
 }

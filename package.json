@@ -1,519 +1,409 @@
 {
-    "name": "vsmacs",
-    "displayName": "VSmacs",
-    "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-    "version": "0.0.5",
-    "license": "MIT",
-    "publisher": "kpping",
-    "engines": {
-        "vscode": "^1.18.1"
-    },
-    "categories": [
-        "Keymaps"
-    ],
-    "keywords": [
-        "keymaps",
-        "emacs",
-        "key bindings"
-    ],
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "commands": [],
-        "keybindings": [
-            {
-                "key": "alt+x",
-                "command": "workbench.action.showCommands"
-            },
-            {
-                "key": "ctrl+f",
-                "command": "vsmacs.MoveCursorRight",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "right",
-                "command": "vsmacs.MoveCursorRight",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "vsmacs.MoveCursorDown",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "workbench.action.quickOpenNavigateNext",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "selectNextSuggestion",
-                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "showNextParameterHint",
-                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-            },
-            {
-                "key": "ctrl+n",
-                "command": "repl.action.historyNext",
-                "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
-            },
-            {
-                "key": "down",
-                "command": "vsmacs.MoveCursorDown",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "down",
-                "command": "workbench.action.quickOpenNavigateNext",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "down",
-                "command": "selectNextSuggestion",
-                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-            },
-            {
-                "key": "down",
-                "command": "showNextParameterHint",
-                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-            },
-            {
-                "key": "down",
-                "command": "repl.action.historyNext",
-                "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "vsmacs.MoveCursorUp",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "workbench.action.quickOpenNavigatePrevious",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "search.focus.nextInputBox",
-                "when": "inputBoxFocus && searchViewletVisible"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "selectPrevSuggestion",
-                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "showPrevParameterHint",
-                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-            },
-            {
-                "key": "ctrl+p",
-                "command": "repl.action.historyPrevious",
-                "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine"
-            },
-            {
-                "key": "up",
-                "command": "vsmacs.MoveCursorUp",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "up",
-                "command": "workbench.action.quickOpenNavigatePrevious",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "up",
-                "command": "search.focus.nextInputBox",
-                "when": "inputBoxFocus && searchViewletVisible"
-            },
-            {
-                "key": "up",
-                "command": "selectPrevSuggestion",
-                "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
-            },
-            {
-                "key": "up",
-                "command": "showPrevParameterHint",
-                "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-            },
-            {
-                "key": "up",
-                "command": "repl.action.historyPrevious",
-                "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine"
-            },
-            {
-                "key": "ctrl+b",
-                "command": "vsmacs.MoveCursorLeft",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "left",
-                "command": "vsmacs.MoveCursorLeft",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "escape shift+,",
-                "command": "vsmacs.MoveCursorTop",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "escape shift+.",
-                "command": "vsmacs.MoveCursorBottom",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+e",
-                "command": "vsmacs.MoveCursorEnd",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "end",
-                "command": "vsmacs.MoveCursorEnd",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+a",
-                "command": "vsmacs.MoveCursorHome",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "home",
-                "command": "vsmacs.MoveCursorHome",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "alt+w",
-                "command": "vsmacs.Copy",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+w",
-                "command": "vsmacs.Cut",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+y",
-                "command": "vsmacs.Paste",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+k",
-                "command": "vsmacs.Kill",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "backspace",
-                "command": "vsmacs.Backspace",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "ctrl+space",
-                "command": "vsmacs.StartMarkMode",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "escape escape",
-                "command": "vsmacs.StopMarkMode",
-                "when": "editorTextFocus"
-            },
-            {
-                "key": "ctrl+s",
-                "command": "actions.find"
-            },
-            {
-                "key": "ctrl+s",
-                "command": "editor.action.nextMatchFindAction",
-                "when": "findWidgetVisible"
-            },
-            {
-                "key": "enter",
-                "command": "vsmacs.PreviousMatchFindAction_CloseFindWidget",
-                "when": "findWidgetVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeFindWidget",
-                "when": "findWidgetVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeFindWidget",
-                "when": "findWidgetVisible"
-            },
-            {
-                "key": "ctrl+x ctrl+s",
-                "command": "workbench.action.files.save"
-            },
-            {
-                "key": "ctrl+x ctrl+w",
-                "command": "workbench.action.files.saveAs"
-            },
-            {
-                "key": "ctrl+x ctrl+f",
-                "command": "workbench.action.quickOpen"
-            },
-            {
-                "key": "ctrl+x ctrl+c",
-                "command": "workbench.action.closeActiveEditor"
-            },
-            {
-                "key": "ctrl+/",
-                "command": "undo"
-            },
-            {
-                "key": "ctrl+'",
-                "command": "editor.action.triggerSuggest"
-            },
-            {
-                "key": "ctrl+;",
-                "command": "editor.action.triggerParameterHints"
-            },
-            {
-                "key": "ctrl+x 3",
-                "command": "workbench.action.splitEditor"
-            },
-            {
-                "key": "ctrl+x 0",
-                "command": "workbench.action.closeEditorsInGroup"
-            },
-            {
-                "key": "ctrl+x 1",
-                "command": "workbench.action.closeOtherEditors"
-            },
-            {
-                "key": "ctrl+x o",
-                "command": "workbench.action.navigateEditorGroups"
-            },
-            {
-                "mac": "cmd+1",
-                "key": "alt+1",
-                "command": "workbench.action.openEditorAtIndex1"
-            },
-            {
-                "mac": "cmd+2",
-                "key": "alt+2",
-                "command": "workbench.action.openEditorAtIndex2"
-            },
-            {
-                "mac": "cmd+3",
-                "key": "alt+3",
-                "command": "workbench.action.openEditorAtIndex3"
-            },
-            {
-                "mac": "cmd+4",
-                "key": "alt+4",
-                "command": "workbench.action.openEditorAtIndex4"
-            },
-            {
-                "mac": "cmd+5",
-                "key": "alt+5",
-                "command": "workbench.action.openEditorAtIndex5"
-            },
-            {
-                "mac": "cmd+6",
-                "key": "alt+6",
-                "command": "workbench.action.openEditorAtIndex6"
-            },
-            {
-                "mac": "cmd+7",
-                "key": "alt+7",
-                "command": "workbench.action.openEditorAtIndex7"
-            },
-            {
-                "mac": "cmd+8",
-                "key": "alt+8",
-                "command": "workbench.action.openEditorAtIndex8"
-            },
-            {
-                "mac": "cmd+9",
-                "key": "alt+9",
-                "command": "workbench.action.openEditorAtIndex9"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "workbench.action.exitZenMode",
-                "when": "inZenMode"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeReferenceSearchEditor",
-                "when": "inReferenceSearchEditor && !config.editor.stablePeek"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "removeSecondaryCursors",
-                "when": "editorHasMultipleSelections && editorTextFocus"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeBreakpointWidget",
-                "when": "breakpointWidgetVisible && editorFocus"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "leaveSnippet",
-                "when": "editorTextFocus && inSnippetMode"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeMarkersNavigation",
-                "when": "editorFocus && markersNavigationVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeReferenceSearch",
-                "when": "referenceSearchVisible && !config.editor.stablePeek"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeParameterHints",
-                "when": "editorTextFocus && parameterHintsVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "hideSuggestWidget",
-                "when": "editorTextFocus && suggestWidgetVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "cancelRenameInput",
-                "when": "editorFocus && renameInputVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeAccessibilityHelp",
-                "when": "accessibilityHelpWidgetVisible && editorFocus"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "closeReplaceInFilesWidget",
-                "when": "replaceInputBoxFocus && searchViewletVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "workbench.action.closeMessages",
-                "when": "globalMessageVisible"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "workbench.action.closeQuickOpen",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "ctrl+g",
-                "command": "workbench.action.hideInterfaceOverview",
-                "when": "interfaceOverviewVisible"
-            },
-            {
-                "key": "ctrl+j",
-                "command": "editor.action.insertLineAfter",
-                "when": "editorTextFocus && !editorReadonly"
-            },
-            {
-                "key": "escape escape",
-                "command": "workbench.action.exitZenMode",
-                "when": "inZenMode"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeReferenceSearchEditor",
-                "when": "inReferenceSearchEditor && !config.editor.stablePeek"
-            },
-            {
-                "key": "escape escape",
-                "command": "removeSecondaryCursors",
-                "when": "editorHasMultipleSelections && editorTextFocus"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeBreakpointWidget",
-                "when": "breakpointWidgetVisible && editorFocus"
-            },
-            {
-                "key": "escape escape",
-                "command": "leaveSnippet",
-                "when": "editorTextFocus && inSnippetMode"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeMarkersNavigation",
-                "when": "editorFocus && markersNavigationVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeReferenceSearch",
-                "when": "referenceSearchVisible && !config.editor.stablePeek"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeParameterHints",
-                "when": "editorTextFocus && parameterHintsVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "hideSuggestWidget",
-                "when": "editorTextFocus && suggestWidgetVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "cancelRenameInput",
-                "when": "editorFocus && renameInputVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeAccessibilityHelp",
-                "when": "accessibilityHelpWidgetVisible && editorFocus"
-            },
-            {
-                "key": "escape escape",
-                "command": "closeReplaceInFilesWidget",
-                "when": "replaceInputBoxFocus && searchViewletVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "workbench.action.closeMessages",
-                "when": "globalMessageVisible"
-            },
-            {
-                "key": "escape escape",
-                "command": "workbench.action.closeQuickOpen",
-                "when": "inQuickOpen"
-            },
-            {
-                "key": "escape escape",
-                "command": "workbench.action.hideInterfaceOverview",
-                "when": "interfaceOverviewVisible"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.44",
-        "@types/node": "^8.0.53",
-        "mocha": "^4.0.1",
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.8"
-    },
-    "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
-    "bugs": "https://github.com/kpping/vsmacs/issues",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kpping/vsmacs.git"
-    }
+  "name": "vsmacs",
+  "displayName": "VSmacs",
+  "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "publisher": "kpping",
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "categories": [
+    "Keymaps"
+  ],
+  "keywords": [
+    "keymaps",
+    "emacs",
+    "key bindings"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+      },
+      {
+        "key": "ctrl+s",
+        "command": "actions.find"
+      },
+      {
+        "key": "ctrl+s",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+      },
+      {
+        "key": "enter",
+        "command": "vsmacs.closeFindWidgetCancelSelection",
+        "when": "editorFocus && findWidgetVisible"
+      },
+      {
+        "key": "ctrl+space",
+        "command": "",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+space",
+        "command": "",
+        "when": "suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "ctrl+space",
+        "command": "vsmacs.toggleMarkSet",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "right",
+        "command": "vsmacs.normalRight",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+f",
+        "command": "vsmacs.moveRight",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "left",
+        "command": "vsmacs.normalLeft",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+b",
+        "command": "vsmacs.moveLeft",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "down",
+        "command": "vsmacs.normalDown",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "vsmacs.moveDown",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "up",
+        "command": "vsmacs.normalUp",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "vsmacs.moveUp",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "home",
+        "command": "vsmacs.normalHome",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+a",
+        "command": "vsmacs.moveLineStart",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "end",
+        "command": "vsmacs.normalEnd",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+e",
+        "command": "vsmacs.moveLineEnd",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "escape shift+.",
+        "command": "vsmacs.moveBottom",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "escape shift+,",
+        "command": "vsmacs.moveTop",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+j",
+        "command": "vsmacs.lineBreakInsertCursorDownCursorLineStart",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+k",
+        "command": "vsmacs.killing",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+w",
+        "command": "vsmacs.clipboardCopyActionCancelSelection",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+w",
+        "command": "vsmacs.clipboardCutActionCancelSelection",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+y",
+        "command": "vsmacs.clipboardPasteActionCancelSelection",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+/",
+        "command": "undo",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+.",
+        "command": "redo",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+x ctrl+f",
+        "command": "workbench.action.quickOpen"
+      },
+      {
+        "key": "ctrl+x ctrl+s",
+        "command": "workbench.action.files.save"
+      },
+      {
+        "key": "ctrl+x ctrl+c",
+        "command": "workbench.action.closeWindow",
+        "when": "!editorIsOpen && !multipleEditorGroups"
+      },
+      {
+        "key": "ctrl+x ctrl+c",
+        "command": "workbench.action.closeActiveEditor"
+      },
+      {
+        "key": "ctrl+x ctrl+c",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+      },
+      {
+        "key": "ctrl+'",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+'",
+        "command": "toggleSuggestionDetails",
+        "when": "suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": ""
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.hideInterfaceOverview",
+        "when": "interfaceOverviewVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "notifications.hideList",
+        "when": "notificationCenterVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.terminal.clearSelection",
+        "when": "terminalFocus && terminalTextSelected && !terminalFindWidgetVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.terminal.navigationModeExit",
+        "when": "accessibilityModeEnabled && terminalA11yTreeFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.terminal.hideFindWidget",
+        "when": "terminalFindWidgetVisible && terminalFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "breadcrumbs.selectEditor",
+        "when": "breadcrumbsActive && breadcrumbsVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "cancelRenameInput",
+        "when": "editorFocus && renameInputVisible"
+      },
+      {
+        "key": "escape",
+        "command": "vsmacs.stopMarkSetCancelSelection",
+        "when": "editorHasSelection && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "vsmacs.stopMarkSetCancelSelection",
+        "when": "editorHasSelection && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeAccessibilityHelp",
+        "when": "accessibilityHelpWidgetVisible && editorFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeBreakpointWidget",
+        "when": "breakpointWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeDirtyDiff",
+        "when": "dirtyDiffVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "vsmacs.closeFindWidgetCancelSelection",
+        "when": "editorFocus && findWidgetVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeMarkersNavigation",
+        "when": "editorFocus && markersNavigationVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeParameterHints",
+        "when": "editorFocus && parameterHintsVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReferenceSearchEditor",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReplaceInFilesWidget",
+        "when": "replaceInputBoxFocus && searchViewletVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "editor.action.webvieweditor.hideFind",
+        "when": "webviewFindWidgetVisible && !editorFocus && activeEditor == 'WebviewEditor'"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "editor.cancelOperation",
+        "when": "cancellableOperation"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "editor.closeCallHierarchy",
+        "when": "callHierarchyVisible && !config.editor.stablePeek"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "editor.gotoNextSymbolFromResult.cancel",
+        "when": "hasSymbols"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "filesExplorer.cancelCut",
+        "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "keybindings.editor.clearSearchResults",
+        "when": "inKeybindings && inKeybindingsSearch"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "leaveEditorMessage",
+        "when": "messageVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "leaveSnippet",
+        "when": "editorTextFocus && inSnippetMode"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "list.clear",
+        "when": "listFocus && listHasSelectionOrFocus && !inputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "notifications.hideToasts",
+        "when": "notificationToastsVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "removeSecondaryCursors",
+        "when": "editorHasMultipleSelections && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "search.action.cancel",
+        "when": "listFocus && searchViewletVisible && !inputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "settings.action.clearSearchResults",
+        "when": "inSettingsSearch"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.hideComment",
+        "when": "commentEditorFocused"
+      }
+    ]
+  },
+  "scripts": {
+    "tsc:onlyts": "tsc -b tsconfig-onlyts.json",
+    "tsc:spects": "tsc -b tsconfig-spects.json",
+    "compile": "yarn tsc:onlyts && yarn tsc:spects",
+    "watch": "tsc -b tsconfig-onlyts.json --watch",
+    "lint": "eslint --ext .ts ./src --fix",
+    "prettier:config": "prettier --no-config --write \"./**/*.{json,yml}\"",
+    "prettier:ts": "prettier --write \"./**/*.ts\"",
+    "prettier": "yarn prettier:config --loglevel warn && yarn prettier:ts --loglevel warn",
+    "test": "jest --passWithNoTests",
+    "build": "yarn prettier && yarn lint && yarn compile && yarn test"
+  },
+  "dependencies": {
+    "@ag1/nil": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^10",
+    "@types/vscode": "^1.38.0",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
+  },
+  "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
+  "bugs": "https://github.com/kpping/vsmacs/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kpping/vsmacs.git"
+  }
 }

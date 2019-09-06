@@ -6,7 +6,7 @@
     "license": "MIT",
     "publisher": "kpping",
     "engines": {
-        "vscode": "^1.18.1"
+    "vscode": "^1.38.0"
     },
     "categories": [
         "Keymaps"
@@ -19,7 +19,7 @@
     "activationEvents": [
         "*"
     ],
-    "main": "./out/src/extension",
+  "main": "./out/extension.js",
     "contributes": {
         "commands": [],
         "keybindings": [

@@ -498,17 +498,36 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+    "tsc:onlyts": "tsc -b tsconfig-onlyts.json",
+    "tsc:spects": "tsc -b tsconfig-spects.json",
+    "compile": "yarn tsc:onlyts && yarn tsc:spects",
+    "watch": "tsc -b tsconfig-onlyts.json --watch",
+    "lint": "eslint --ext .ts ./src --fix",
+    "prettier:config": "prettier --no-config --write \"./**/*.{json,yml}\"",
+    "prettier:ts": "prettier --write \"./**/*.ts\"",
+    "prettier": "yarn prettier:config --loglevel warn && yarn prettier:ts --loglevel warn",
+    "test": "jest --passWithNoTests",
+    "build": "yarn prettier && yarn lint && yarn compile && yarn test"
+  },
+  "dependencies": {
+    "@ag1/nil": "^1.1.0"
     },
     "devDependencies": {
-        "@types/mocha": "^2.2.44",
-        "@types/node": "^8.0.53",
-        "mocha": "^4.0.1",
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.8"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^10",
+    "@types/vscode": "^1.38.0",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
     },
     "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
     "bugs": "https://github.com/kpping/vsmacs/issues",

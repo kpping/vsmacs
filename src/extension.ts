@@ -1,162 +1,189 @@
 import * as vscode from 'vscode';
-import { VSmacsState } from './state';
+import { isNil } from '@ag1/nil';
 
-export function activate(context: vscode.ExtensionContext) {
-    // COMMAND: vsmacs.PreviousMatchFindAction_CloseFindWidget
-    // DO: select the previous text and close find widget
-    // WHY: when user hit `enter`, cursor move to the next text, so we have to move it back
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.PreviousMatchFindAction_CloseFindWidget',
-            () => {
-                vscode.commands.executeCommand('editor.action.previousMatchFindAction');
+let isMarkSet = false;
+let markStart: vscode.Position | undefined = undefined;
+let statusBarMsg!: vscode.Disposable;
 
-                vscode.commands.executeCommand('closeFindWidget');
-            }
-    ));
-
-    // COMMAND: vsmacs.StartMarkMode
-    // DO: start markmode
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.StartMarkMode',
-            () => {
-                if (!vscode.window.activeTextEditor) {
-                    return;
-                }
-
-                let cursorPosition = vscode.window.activeTextEditor.selection.active;
-
-                VSmacsState.getInstance().startMarkMode();
-
-                vscode.window.activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition);
-
-                vscode.window.setStatusBarMessage("Mark Set", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.StopMarkMode
-    // DO: stop markmode
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.StopMarkMode',
-            () => {
-                vscode.commands.executeCommand("cancelSelection");
-
-                VSmacsState.getInstance().stopMarkMode();
-
-                vscode.window.setStatusBarMessage("Quit", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.MoveCursorX and vsmacs.MoveCursorXSelect
-    // DO: move cursor
-    ['Up', 'Down', 'Left', 'Right', 'Home', 'End', 'Top', 'Bottom'].forEach((val) => {
-        context.subscriptions.push(
-            vscode.commands.registerCommand(
-                `vsmacs.MoveCursor${val}`,
-                () => {
-                    if (VSmacsState.getInstance().isInMarkMode()) {
-                        vscode.commands.executeCommand(`cursor${val}Select`);
-                    } else {
-                        vscode.commands.executeCommand(`cursor${val}`);
-                    }
-                }
-        ));
-    });
-
-    // COMMAND: vsmacs.Copy
-    // DO: copy text in marking area to global (os) clipboard
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.Copy',
-            () => {
-                VSmacsState.getInstance().stopMarkMode();
-
-                vscode.commands.executeCommand('editor.action.clipboardCopyAction');
-
-                vscode.commands.executeCommand("cancelSelection");
-
-                vscode.window.setStatusBarMessage("Copy", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.Cut
-    // DO: cut text in marking area to global (os) clipboard
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.Cut',
-            () => {
-                VSmacsState.getInstance().stopMarkMode();
-
-                vscode.commands.executeCommand('editor.action.clipboardCutAction');
-
-                vscode.window.setStatusBarMessage("Cut", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.Paste
-    // DO: paste text from global (os) clipboard
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.Paste',
-            () => {
-                VSmacsState.getInstance().stopMarkMode();
-
-                vscode.commands.executeCommand('editor.action.clipboardPasteAction');
-
-                vscode.window.setStatusBarMessage("Paste", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.Kill
-    // DO: cut text from cursor to the end of line to global (os) clipboard
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.Kill',
-            () => {
-                if (VSmacsState.getInstance().isInMarkMode()) {
-                    vscode.commands.executeCommand('editor.action.clipboardCopyAction');
-
-                    vscode.commands.executeCommand('vsmacs.Backspace')
-                } else {
-                    if (!vscode.window.activeTextEditor) {
-                        return;
-                    }
-
-                    let prePosition = vscode.window.activeTextEditor.selection.active;
-
-                    let requireToggleWordWrap = vscode.workspace.getConfiguration('editor').get('wordWrap') !== 'off';
-
-                    requireToggleWordWrap && vscode.commands.executeCommand('editor.action.toggleWordWrap');
-
-                    vscode.commands.executeCommand('cursorEndSelect');
-
-                    vscode.commands.executeCommand('editor.action.clipboardCopyAction');
-
-                    vscode.window.activeTextEditor.selection = new vscode.Selection(prePosition, prePosition);
-
-                    vscode.commands.executeCommand('deleteAllRight');
-
-                    requireToggleWordWrap && vscode.commands.executeCommand('editor.action.toggleWordWrap');
-                }
-
-                vscode.window.setStatusBarMessage("Kill", 1000);
-            }
-    ));
-
-    // COMMAND: vsmacs.Backspace
-    // DO: normal backspace command + stopMarkMode
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'vsmacs.Backspace',
-            () => {
-                vscode.commands.executeCommand('deleteLeft');
-
-                VSmacsState.getInstance().stopMarkMode();
-            }
-    ));
+export function clonePosition({ line, character }: vscode.Position): vscode.Position {
+    return new vscode.Position(line, character);
 }
 
-export function deactivate() {
+export function markSet(position: vscode.Position) {
+    isMarkSet = true;
+    markStart = clonePosition(position);
+    statusBarMsg = vscode.window.setStatusBarMessage('Mark set');
+}
+
+export function markUnset() {
+    isMarkSet = false;
+    markStart = undefined;
+
+    if (!isNil(statusBarMsg)) {
+        statusBarMsg.dispose();
+    }
+}
+
+export function getSelection(lastPosition: vscode.Position) {
+    if (isNil(markStart)) {
+        return new vscode.Selection(lastPosition, lastPosition);
+    }
+
+    return new vscode.Selection(markStart, lastPosition);
+}
+
+export function activate(context: vscode.ExtensionContext): void {
+    // stop mark set + cancelSelection
+    const stopMarkSetCancelSelection = vscode.commands.registerCommand(
+        'vsmacs.stopMarkSetCancelSelection',
+        async () => {
+            await vscode.commands.executeCommand('cancelSelection');
+            markUnset();
+        },
+    );
+    context.subscriptions.push(stopMarkSetCancelSelection);
+
+    // closeFindWidget + cancelSelection
+    const closeFindWidgetCancelSelection = vscode.commands.registerCommand(
+        'vsmacs.closeFindWidgetCancelSelection',
+        async () => {
+            await vscode.commands.executeCommand('closeFindWidget');
+            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
+        },
+    );
+    context.subscriptions.push(closeFindWidgetCancelSelection);
+
+    // lineBreakInsert + cursorDown + cursorLineStart
+    const lineBreakInsertCursorDownCursorLineStart = vscode.commands.registerCommand(
+        'vsmacs.lineBreakInsertCursorDownCursorLineStart',
+        async () => {
+            await vscode.commands.executeCommand('lineBreakInsert');
+            await vscode.commands.executeCommand('cursorDown');
+            await vscode.commands.executeCommand('cursorLineStart');
+        },
+    );
+    context.subscriptions.push(lineBreakInsertCursorDownCursorLineStart);
+
+    // editor.action.clipboardCopyAction + cancelSelection
+    const clipboardCopyActionCancelSelection = vscode.commands.registerCommand(
+        'vsmacs.clipboardCopyActionCancelSelection',
+        async () => {
+            await vscode.commands.executeCommand('editor.action.clipboardCopyAction');
+            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
+        },
+    );
+    context.subscriptions.push(clipboardCopyActionCancelSelection);
+
+    // editor.action.clipboardCutAction + cancelSelection
+    const clipboardCutActionCancelSelection = vscode.commands.registerCommand(
+        'vsmacs.clipboardCutActionCancelSelection',
+        async () => {
+            await vscode.commands.executeCommand('editor.action.clipboardCutAction');
+            markUnset();
+        },
+    );
+    context.subscriptions.push(clipboardCutActionCancelSelection);
+
+    // editor.action.clipboardPasteActionCancelSelection + cancelSelection
+    const clipboardPasteActionCancelSelection = vscode.commands.registerCommand(
+        'vsmacs.clipboardPasteActionCancelSelection',
+        async () => {
+            await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+            markUnset();
+        },
+    );
+    context.subscriptions.push(clipboardPasteActionCancelSelection);
+
+    // toggleMarkSet
+    const toggleMarkSet = vscode.commands.registerCommand('vsmacs.toggleMarkSet', async () => {
+        const editor = vscode.window.activeTextEditor;
+
+        if (isNil(editor)) {
+            return;
+        }
+
+        await vscode.commands.executeCommand('cancelSelection');
+
+        if (isMarkSet) {
+            markUnset();
+        } else {
+            markSet(editor.selection.active);
+        }
+    });
+    context.subscriptions.push(toggleMarkSet);
+
+    // cursorLineEndSelect
+    const cursorLineEndSelect = vscode.commands.registerCommand('cursorLineEndSelect', async () => {
+        const editor = vscode.window.activeTextEditor;
+
+        if (isNil(editor)) {
+            return;
+        }
+
+        await vscode.commands.executeCommand('cancelSelection');
+        await vscode.commands.executeCommand('cursorLineEnd');
+
+        if (isMarkSet) {
+            editor.selection = getSelection(editor.selection.active);
+        }
+    });
+    context.subscriptions.push(cursorLineEndSelect);
+
+    // cursorLineStartSelect
+    const cursorLineStartSelect = vscode.commands.registerCommand('cursorLineStartSelect', async () => {
+        const editor = vscode.window.activeTextEditor;
+
+        if (isNil(editor)) {
+            return;
+        }
+
+        await vscode.commands.executeCommand('cancelSelection');
+        await vscode.commands.executeCommand('cursorLineStart');
+
+        if (isMarkSet) {
+            editor.selection = getSelection(editor.selection.active);
+        }
+    });
+    context.subscriptions.push(cursorLineStartSelect);
+
+    // move[Right, Left, Down, Up, End, Home, Bottom, Top, 'LineEnd', 'LineStart']
+    ['Right', 'Left', 'Down', 'Up', 'End', 'Home', 'Bottom', 'Top', 'LineEnd', 'LineStart'].forEach((direction) => {
+        const move = vscode.commands.registerCommand(`vsmacs.move${direction}`, async () => {
+            const editor = vscode.window.activeTextEditor;
+
+            if (isNil(editor)) {
+                return;
+            }
+
+            if (!isMarkSet) {
+                await vscode.commands.executeCommand(`cursor${direction}`);
+                return;
+            }
+
+            if (!isNil(markStart)) {
+                editor.selection = getSelection(editor.selection.active);
+            }
+
+            await vscode.commands.executeCommand(`cursor${direction}Select`);
+        });
+        context.subscriptions.push(move);
+    });
+
+    // normal[Right, Left, Down, Up, End, Home, Bottom, Top]
+    ['Right', 'Left', 'Down', 'Up', 'End', 'Home', 'Bottom', 'Top'].forEach((direction) => {
+        const move = vscode.commands.registerCommand(`vsmacs.normal${direction}`, async () => {
+            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
+            await vscode.commands.executeCommand(`cursor${direction}`);
+        });
+        context.subscriptions.push(move);
+    });
+
+    // killing
+    const killing = vscode.commands.registerCommand('vsmacs.killing', async () => {
+        await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
+        await vscode.commands.executeCommand('vsmacs.toggleMarkSet');
+        await vscode.commands.executeCommand('vsmacs.moveLineEnd');
+        await vscode.commands.executeCommand('vsmacs.clipboardCutActionCancelSelection');
+    });
+    context.subscriptions.push(killing);
 }

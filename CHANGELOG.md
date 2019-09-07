@@ -1,3 +1,7 @@
+## v0.1.1
+* stop mark mode when hit backspace
+* fix mark mode not stop when pressing `ctrl+g` if selection is empty
+
 ## v0.1.0
 * upgrade libs version
 * refactoring code

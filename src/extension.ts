@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { isNil } from '@ag1/nil';
 
-let isMarkSet = false;
+let isMarkMode = false;
 let markStart: vscode.Position | undefined = undefined;
 let statusBarMsg!: vscode.Disposable;
 
@@ -9,14 +9,14 @@ export function clonePosition({ line, character }: vscode.Position): vscode.Posi
     return new vscode.Position(line, character);
 }
 
-export function markSet(position: vscode.Position) {
-    isMarkSet = true;
+export function setMarkMode(position: vscode.Position): void {
+    isMarkMode = true;
     markStart = clonePosition(position);
     statusBarMsg = vscode.window.setStatusBarMessage('Mark set');
 }
 
-export function markUnset() {
-    isMarkSet = false;
+export function unsetMarkMode(): void {
+    isMarkMode = false;
     markStart = undefined;
 
     if (!isNil(statusBarMsg)) {
@@ -24,7 +24,7 @@ export function markUnset() {
     }
 }
 
-export function getSelection(lastPosition: vscode.Position) {
+export function updateSelection(lastPosition: vscode.Position): vscode.Selection {
     if (isNil(markStart)) {
         return new vscode.Selection(lastPosition, lastPosition);
     }
@@ -32,71 +32,61 @@ export function getSelection(lastPosition: vscode.Position) {
     return new vscode.Selection(markStart, lastPosition);
 }
 
-export function activate(context: vscode.ExtensionContext): void {
-    // stop mark set + cancelSelection
-    const stopMarkSetCancelSelection = vscode.commands.registerCommand(
-        'vsmacs.stopMarkSetCancelSelection',
-        async () => {
-            await vscode.commands.executeCommand('cancelSelection');
-            markUnset();
-        },
-    );
-    context.subscriptions.push(stopMarkSetCancelSelection);
+export function getCurrentPosistion(editor: vscode.TextEditor): vscode.Position {
+    return editor.selection.active;
+}
 
-    // closeFindWidget + cancelSelection
-    const closeFindWidgetCancelSelection = vscode.commands.registerCommand(
-        'vsmacs.closeFindWidgetCancelSelection',
-        async () => {
-            await vscode.commands.executeCommand('closeFindWidget');
-            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
-        },
-    );
-    context.subscriptions.push(closeFindWidgetCancelSelection);
+export function getActiveTextEitor(): vscode.TextEditor | undefined {
+    return vscode.window.activeTextEditor;
+}
+
+export function activate(context: vscode.ExtensionContext): void {
+    // cancelSelection + unset mark mode
+    const stopMarkMode = vscode.commands.registerCommand('vsmacs.stopMarkMode', async () => {
+        await vscode.commands.executeCommand('cancelSelection');
+        unsetMarkMode();
+    });
+    context.subscriptions.push(stopMarkMode);
+
+    // closeFindWidget + vsmacs.stopMarkMode
+    const closeFindWidget = vscode.commands.registerCommand('vsmacs.closeFindWidget', async () => {
+        await vscode.commands.executeCommand('closeFindWidget');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+    });
+    context.subscriptions.push(closeFindWidget);
 
     // lineBreakInsert + cursorDown + cursorLineStart
-    const lineBreakInsertCursorDownCursorLineStart = vscode.commands.registerCommand(
-        'vsmacs.lineBreakInsertCursorDownCursorLineStart',
-        async () => {
-            await vscode.commands.executeCommand('lineBreakInsert');
-            await vscode.commands.executeCommand('cursorDown');
-            await vscode.commands.executeCommand('cursorLineStart');
-        },
-    );
-    context.subscriptions.push(lineBreakInsertCursorDownCursorLineStart);
+    const lineBreakInsert = vscode.commands.registerCommand('vsmacs.lineBreakInsert', async () => {
+        await vscode.commands.executeCommand('lineBreakInsert');
+        await vscode.commands.executeCommand('cursorDown');
+        await vscode.commands.executeCommand('cursorLineStart');
+    });
+    context.subscriptions.push(lineBreakInsert);
 
-    // editor.action.clipboardCopyAction + cancelSelection
-    const clipboardCopyActionCancelSelection = vscode.commands.registerCommand(
-        'vsmacs.clipboardCopyActionCancelSelection',
-        async () => {
-            await vscode.commands.executeCommand('editor.action.clipboardCopyAction');
-            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
-        },
-    );
-    context.subscriptions.push(clipboardCopyActionCancelSelection);
+    // editor.action.clipboardCopyAction + vsmacs.stopMarkMode
+    const clipboardCopyAction = vscode.commands.registerCommand('vsmacs.clipboardCopyAction', async () => {
+        await vscode.commands.executeCommand('editor.action.clipboardCopyAction');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+    });
+    context.subscriptions.push(clipboardCopyAction);
 
     // editor.action.clipboardCutAction + cancelSelection
-    const clipboardCutActionCancelSelection = vscode.commands.registerCommand(
-        'vsmacs.clipboardCutActionCancelSelection',
-        async () => {
-            await vscode.commands.executeCommand('editor.action.clipboardCutAction');
-            markUnset();
-        },
-    );
-    context.subscriptions.push(clipboardCutActionCancelSelection);
+    const clipboardCutAction = vscode.commands.registerCommand('vsmacs.clipboardCutAction', async () => {
+        await vscode.commands.executeCommand('editor.action.clipboardCutAction');
+        unsetMarkMode();
+    });
+    context.subscriptions.push(clipboardCutAction);
 
-    // editor.action.clipboardPasteActionCancelSelection + cancelSelection
-    const clipboardPasteActionCancelSelection = vscode.commands.registerCommand(
-        'vsmacs.clipboardPasteActionCancelSelection',
-        async () => {
-            await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
-            markUnset();
-        },
-    );
-    context.subscriptions.push(clipboardPasteActionCancelSelection);
+    // editor.action.clipboardPasteAction + cancelSelection
+    const clipboardPasteAction = vscode.commands.registerCommand('vsmacs.clipboardPasteAction', async () => {
+        await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+        unsetMarkMode();
+    });
+    context.subscriptions.push(clipboardPasteAction);
 
-    // toggleMarkSet
-    const toggleMarkSet = vscode.commands.registerCommand('vsmacs.toggleMarkSet', async () => {
-        const editor = vscode.window.activeTextEditor;
+    // cancelSelection + toggle mark mode
+    const toggleMarkMode = vscode.commands.registerCommand('vsmacs.toggleMarkMode', async () => {
+        const editor = getActiveTextEitor();
 
         if (isNil(editor)) {
             return;
@@ -104,17 +94,17 @@ export function activate(context: vscode.ExtensionContext): void {
 
         await vscode.commands.executeCommand('cancelSelection');
 
-        if (isMarkSet) {
-            markUnset();
+        if (isMarkMode) {
+            unsetMarkMode();
         } else {
-            markSet(editor.selection.active);
+            setMarkMode(getCurrentPosistion(editor));
         }
     });
-    context.subscriptions.push(toggleMarkSet);
+    context.subscriptions.push(toggleMarkMode);
 
     // cursorLineEndSelect
     const cursorLineEndSelect = vscode.commands.registerCommand('cursorLineEndSelect', async () => {
-        const editor = vscode.window.activeTextEditor;
+        const editor = getActiveTextEitor();
 
         if (isNil(editor)) {
             return;
@@ -123,15 +113,15 @@ export function activate(context: vscode.ExtensionContext): void {
         await vscode.commands.executeCommand('cancelSelection');
         await vscode.commands.executeCommand('cursorLineEnd');
 
-        if (isMarkSet) {
-            editor.selection = getSelection(editor.selection.active);
+        if (isMarkMode) {
+            editor.selection = updateSelection(getCurrentPosistion(editor));
         }
     });
     context.subscriptions.push(cursorLineEndSelect);
 
     // cursorLineStartSelect
     const cursorLineStartSelect = vscode.commands.registerCommand('cursorLineStartSelect', async () => {
-        const editor = vscode.window.activeTextEditor;
+        const editor = getActiveTextEitor();
 
         if (isNil(editor)) {
             return;
@@ -140,28 +130,30 @@ export function activate(context: vscode.ExtensionContext): void {
         await vscode.commands.executeCommand('cancelSelection');
         await vscode.commands.executeCommand('cursorLineStart');
 
-        if (isMarkSet) {
-            editor.selection = getSelection(editor.selection.active);
+        if (isMarkMode) {
+            editor.selection = updateSelection(editor.selection.active);
         }
     });
     context.subscriptions.push(cursorLineStartSelect);
 
-    // move[Right, Left, Down, Up, End, Home, Bottom, Top, 'LineEnd', 'LineStart']
-    ['Right', 'Left', 'Down', 'Up', 'End', 'Home', 'Bottom', 'Top', 'LineEnd', 'LineStart'].forEach((direction) => {
+    // move[Right, Left, Down, Up, Bottom, Top, 'LineEnd', 'LineStart']
+    const moveList = ['Right', 'Left', 'Down', 'Up', 'Bottom', 'Top', 'LineEnd', 'LineStart'];
+    moveList.forEach((direction) => {
         const move = vscode.commands.registerCommand(`vsmacs.move${direction}`, async () => {
-            const editor = vscode.window.activeTextEditor;
+            const editor = getActiveTextEitor();
 
             if (isNil(editor)) {
                 return;
             }
 
-            if (!isMarkSet) {
+            if (!isMarkMode) {
                 await vscode.commands.executeCommand(`cursor${direction}`);
                 return;
             }
 
-            if (!isNil(markStart)) {
-                editor.selection = getSelection(editor.selection.active);
+            // use in scenario: start mark mode, click some posistion, move
+            if (!isNil(markStart) && editor.selection.isEmpty) {
+                editor.selection = updateSelection(editor.selection.active);
             }
 
             await vscode.commands.executeCommand(`cursor${direction}Select`);
@@ -169,10 +161,11 @@ export function activate(context: vscode.ExtensionContext): void {
         context.subscriptions.push(move);
     });
 
-    // normal[Right, Left, Down, Up, End, Home, Bottom, Top]
-    ['Right', 'Left', 'Down', 'Up', 'End', 'Home', 'Bottom', 'Top'].forEach((direction) => {
+    // normal[Right, Left, Down, Up, End, Home]
+    const normalList = ['Right', 'Left', 'Down', 'Up', 'End', 'Home'];
+    normalList.forEach((direction) => {
         const move = vscode.commands.registerCommand(`vsmacs.normal${direction}`, async () => {
-            await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
+            await vscode.commands.executeCommand('vsmacs.stopMarkMode');
             await vscode.commands.executeCommand(`cursor${direction}`);
         });
         context.subscriptions.push(move);
@@ -180,10 +173,10 @@ export function activate(context: vscode.ExtensionContext): void {
 
     // killing
     const killing = vscode.commands.registerCommand('vsmacs.killing', async () => {
-        await vscode.commands.executeCommand('vsmacs.stopMarkSetCancelSelection');
-        await vscode.commands.executeCommand('vsmacs.toggleMarkSet');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+        await vscode.commands.executeCommand('vsmacs.toggleMarkMode');
         await vscode.commands.executeCommand('vsmacs.moveLineEnd');
-        await vscode.commands.executeCommand('vsmacs.clipboardCutActionCancelSelection');
+        await vscode.commands.executeCommand('vsmacs.clipboardCutAction');
     });
     context.subscriptions.push(killing);
 }

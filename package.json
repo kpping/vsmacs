@@ -196,6 +196,11 @@
         "when": "textInputFocus && !editorReadonly"
       },
       {
+        "key": "backspace",
+        "command": "vsmacs.deleteLeft",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
         "key": "ctrl+k",
         "command": "vsmacs.killing",
         "when": "textInputFocus && !editorReadonly"
@@ -302,14 +307,14 @@
         "when": "editorFocus && renameInputVisible"
       },
       {
-        "key": "escape",
+        "key": "escape escape",
         "command": "vsmacs.stopMarkMode",
-        "when": "editorHasSelection && textInputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+g",
         "command": "vsmacs.stopMarkMode",
-        "when": "editorHasSelection && textInputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+g",

@@ -136,8 +136,19 @@ export function activate(context: vscode.ExtensionContext): void {
     });
     context.subscriptions.push(cursorLineStartSelect);
 
-    // move[Right, Left, Down, Up, Bottom, Top, 'LineEnd', 'LineStart']
-    const moveList = ['Right', 'Left', 'Down', 'Up', 'Bottom', 'Top', 'LineEnd', 'LineStart'];
+    // move[Right, Left, Down, Up, Bottom, Top, LineEnd, LineStart, WordEndRight, WordStartLeft]
+    const moveList = [
+        'Right',
+        'Left',
+        'Down',
+        'Up',
+        'Bottom',
+        'Top',
+        'LineEnd',
+        'LineStart',
+        'WordEndRight',
+        'WordStartLeft',
+    ];
     moveList.forEach((direction) => {
         const move = vscode.commands.registerCommand(`vsmacs.move${direction}`, async () => {
             const editor = getActiveTextEitor();

@@ -2,7 +2,7 @@
   "name": "vsmacs",
   "displayName": "VSmacs",
   "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "publisher": "kpping",
   "engines": {
@@ -196,6 +196,11 @@
         "when": "textInputFocus && !editorReadonly"
       },
       {
+        "key": "backspace",
+        "command": "vsmacs.deleteLeft",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
         "key": "ctrl+k",
         "command": "vsmacs.killing",
         "when": "textInputFocus && !editorReadonly"
@@ -302,14 +307,14 @@
         "when": "editorFocus && renameInputVisible"
       },
       {
-        "key": "escape",
+        "key": "escape escape",
         "command": "vsmacs.stopMarkMode",
-        "when": "editorHasSelection && textInputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+g",
         "command": "vsmacs.stopMarkMode",
-        "when": "editorHasSelection && textInputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+g",

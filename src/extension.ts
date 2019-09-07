@@ -171,6 +171,13 @@ export function activate(context: vscode.ExtensionContext): void {
         context.subscriptions.push(move);
     });
 
+    // deleteLeft
+    const deleteLeft = vscode.commands.registerCommand('vsmacs.deleteLeft', async () => {
+        await vscode.commands.executeCommand('deleteLeft');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+    });
+    context.subscriptions.push(deleteLeft);
+
     // killing
     const killing = vscode.commands.registerCommand('vsmacs.killing', async () => {
         await vscode.commands.executeCommand('vsmacs.stopMarkMode');

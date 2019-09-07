@@ -37,7 +37,7 @@
       },
       {
         "key": "enter",
-        "command": "vsmacs.closeFindWidgetCancelSelection",
+        "command": "vsmacs.closeFindWidget",
         "when": "editorFocus && findWidgetVisible"
       },
       {
@@ -52,7 +52,7 @@
       },
       {
         "key": "ctrl+space",
-        "command": "vsmacs.toggleMarkSet",
+        "command": "vsmacs.toggleMarkMode",
         "when": "textInputFocus"
       },
       {
@@ -127,7 +127,7 @@
       },
       {
         "key": "ctrl+j",
-        "command": "vsmacs.lineBreakInsertCursorDownCursorLineStart",
+        "command": "vsmacs.lineBreakInsert",
         "when": "textInputFocus && !editorReadonly"
       },
       {
@@ -137,17 +137,17 @@
       },
       {
         "key": "alt+w",
-        "command": "vsmacs.clipboardCopyActionCancelSelection",
+        "command": "vsmacs.clipboardCopyAction",
         "when": "textInputFocus"
       },
       {
         "key": "ctrl+w",
-        "command": "vsmacs.clipboardCutActionCancelSelection",
+        "command": "vsmacs.clipboardCutAction",
         "when": "textInputFocus && !editorReadonly"
       },
       {
         "key": "ctrl+y",
-        "command": "vsmacs.clipboardPasteActionCancelSelection",
+        "command": "vsmacs.clipboardPasteAction",
         "when": "textInputFocus && !editorReadonly"
       },
       {
@@ -233,12 +233,12 @@
       },
       {
         "key": "escape",
-        "command": "vsmacs.stopMarkSetCancelSelection",
+        "command": "vsmacs.stopMarkMode",
         "when": "editorHasSelection && textInputFocus"
       },
       {
         "key": "ctrl+g",
-        "command": "vsmacs.stopMarkSetCancelSelection",
+        "command": "vsmacs.stopMarkMode",
         "when": "editorHasSelection && textInputFocus"
       },
       {
@@ -258,7 +258,7 @@
       },
       {
         "key": "ctrl+g",
-        "command": "vsmacs.closeFindWidgetCancelSelection",
+        "command": "vsmacs.closeFindWidget",
         "when": "editorFocus && findWidgetVisible"
       },
       {

@@ -10,7 +10,9 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `ctrl+a` | move to beginning of the line |
 | `ctrl+e` | move to end of the line |
 | `ctrl+f` | move forward |
+| `alt+f` | move forward one word |
 | `ctrl+b` | move backward |
+| `alt+b` | move backward one word |
 | `ctrl+n` | move down (next line) |
 | `ctrl+p` | move up (previous line) |
 | `escape shift+,` | move to top |
@@ -20,6 +22,7 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | Keys | Action |
 |------|--------|
 | `ctrl+s` | open search, next matching |
+| `ctrl+r` | previous matching |
 
 ### Cancel, Close Widget
 | Keys | Action |
@@ -61,6 +64,8 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `ctrl+y` | paste from clipboard |
 | `ctrl+k` | kill to clipboard |
 | `ctrl+j` | insert line after |
+| `ctrl+d`, `delete` | delete after |
+| `alt+d` | delete word after |
 
 ### Others
 | Keys | Action |

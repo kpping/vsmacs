@@ -178,6 +178,20 @@ export function activate(context: vscode.ExtensionContext): void {
     });
     context.subscriptions.push(deleteLeft);
 
+    // deleteRight
+    const deleteRight = vscode.commands.registerCommand('vsmacs.deleteRight', async () => {
+        await vscode.commands.executeCommand('deleteRight');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+    });
+    context.subscriptions.push(deleteRight);
+
+    // deleteWordRight
+    const deleteWordRight = vscode.commands.registerCommand('vsmacs.deleteWordRight', async () => {
+        await vscode.commands.executeCommand('deleteWordRight');
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+    });
+    context.subscriptions.push(deleteWordRight);
+
     // killing
     const killing = vscode.commands.registerCommand('vsmacs.killing', async () => {
         await vscode.commands.executeCommand('vsmacs.stopMarkMode');

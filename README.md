@@ -24,38 +24,38 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 ### Cancel, Close Widget
 | Keys | Action |
 |------|--------|
-| `escape escape` | cancel, close |
 | `ctrl+g` | cancel, close |
 
 ### Screen and Editor
 | Keys | Action |
 |------|--------|
-| `ctrl+x 3` | split screen |
-| `ctrl+x 0` | close active screen |
-| `ctrl+x 1` | close other editors |
-| `ctrl+x o` | navigate between screens |
+| `ctrl+x 0` | close active editor group |
+| `ctrl+x 1` | close others editor group |
+| `ctrl+x 2` | split editor horizontal |
+| `ctrl+x 3` | split editor vertical |
+| `ctrl+x o` | navigate between editor groups |
 | `ctrl+x ctrl+c` | close active editor |
 
 ### Tab
 | Keys | Action |
 |------|--------|
-| `cmd+[1-9]` | select tab at [number] index |
+| `cmd+[1-9]` | select tab at [number] index (mac only) |
 | `alt+[1-9]` | select tab at [number] index |
 
 ### File
 | Keys | Action |
 |------|--------|
 | `ctrl+x ctrl+s` | save |
-| `ctrl+x ctrl+w` | save as |
 | `ctrl+x ctrl+f` | quick open (files in project only) |
 
 ### Editing
 | Keys | Action |
 |------|--------|
 | `ctrl+/` | undo |
+| `ctrl+.` | redo |
 | `ctrl+'` | trigger suggest (autocomplete) |
 | `ctrl+;` | trigger parameter hints |
-| `ctrl+space` | trigger mark mode |
+| `ctrl+space` | toggle mark mode |
 | `alt+w` | copy to clipboard |
 | `ctrl+w` | cut to clipboard |
 | `ctrl+y` | paste from clipboard |

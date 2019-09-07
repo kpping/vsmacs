@@ -23,8 +23,73 @@
   "contributes": {
     "keybindings": [
       {
+        "key": "ctrl+x 2",
+        "command": "workbench.action.splitEditorOrthogonal"
+      },
+      {
+        "key": "ctrl+x 3",
+        "command": "workbench.action.splitEditor"
+      },
+      {
+        "key": "ctrl+x o",
+        "command": "workbench.action.navigateEditorGroups"
+      },
+      {
+        "key": "ctrl+x 0",
+        "command": "workbench.action.closeEditorsInGroup"
+      },
+      {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.closeOtherEditors"
+      },
+      {
         "key": "alt+x",
         "command": "workbench.action.showCommands"
+      },
+      {
+        "mac": "cmd+1",
+        "key": "alt+1",
+        "command": "workbench.action.openEditorAtIndex1"
+      },
+      {
+        "mac": "cmd+2",
+        "key": "alt+2",
+        "command": "workbench.action.openEditorAtIndex2"
+      },
+      {
+        "mac": "cmd+3",
+        "key": "alt+3",
+        "command": "workbench.action.openEditorAtIndex3"
+      },
+      {
+        "mac": "cmd+4",
+        "key": "alt+4",
+        "command": "workbench.action.openEditorAtIndex4"
+      },
+      {
+        "mac": "cmd+5",
+        "key": "alt+5",
+        "command": "workbench.action.openEditorAtIndex5"
+      },
+      {
+        "mac": "cmd+6",
+        "key": "alt+6",
+        "command": "workbench.action.openEditorAtIndex6"
+      },
+      {
+        "mac": "cmd+7",
+        "key": "alt+7",
+        "command": "workbench.action.openEditorAtIndex7"
+      },
+      {
+        "mac": "cmd+8",
+        "key": "alt+8",
+        "command": "workbench.action.openEditorAtIndex8"
+      },
+      {
+        "mac": "cmd+9",
+        "key": "alt+9",
+        "command": "workbench.action.openEditorAtIndex9"
       },
       {
         "key": "ctrl+s",
@@ -191,6 +256,11 @@
         "key": "ctrl+'",
         "command": "toggleSuggestionDetails",
         "when": "suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "ctrl+;",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorHasSignatureHelpProvider && editorTextFocus"
       },
       {
         "key": "ctrl+g",

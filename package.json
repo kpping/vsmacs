@@ -101,6 +101,11 @@
         "when": "editorFocus && findInputFocussed"
       },
       {
+        "key": "ctrl+r",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+      },
+      {
         "key": "enter",
         "command": "vsmacs.closeFindWidget",
         "when": "editorFocus && findWidgetVisible"
@@ -131,6 +136,11 @@
         "when": "textInputFocus"
       },
       {
+        "key": "alt+f",
+        "command": "vsmacs.moveWordEndRight",
+        "when": "textInputFocus"
+      },
+      {
         "key": "left",
         "command": "vsmacs.normalLeft",
         "when": "textInputFocus"
@@ -138,6 +148,11 @@
       {
         "key": "ctrl+b",
         "command": "vsmacs.moveLeft",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+b",
+        "command": "vsmacs.moveWordStartLeft",
         "when": "textInputFocus"
       },
       {
@@ -198,6 +213,21 @@
       {
         "key": "backspace",
         "command": "vsmacs.deleteLeft",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+d",
+        "command": "vsmacs.deleteRight",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "delete",
+        "command": "vsmacs.deleteRight",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+d",
+        "command": "vsmacs.deleteWordRight",
         "when": "textInputFocus && !editorReadonly"
       },
       {

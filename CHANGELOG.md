@@ -1,3 +1,9 @@
+## v0.2.0
+* add `alt+d` (move forward one word)
+* add `alt+b` (move backward one word)
+* add `ctrl+r` (previous matching)
+* add `alt+d` (delete word after)
+
 ## v0.1.1
 * stop mark mode when hit backspace
 * fix mark mode not stop when pressing `ctrl+g` if selection is empty

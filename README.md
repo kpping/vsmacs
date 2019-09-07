@@ -7,14 +7,14 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 ### Basic Move
 | Keys | Action |
 |------|--------|
-| `ctrl+a` | beginning of line |
-| `ctrl+e` | end of line |
-| `ctrl+f` | forward |
-| `ctrl+b` | backward |
-| `ctrl+n` | next line |
-| `ctrl+p` | previous line |
-| `escape shift+,` | beginning of buffer |
-| `escape shift+.` | end of buffer |
+| `ctrl+a` | move to beginning of the line |
+| `ctrl+e` | move to end of the line |
+| `ctrl+f` | move forward |
+| `ctrl+b` | move backward |
+| `ctrl+n` | move down (next line) |
+| `ctrl+p` | move up (previous line) |
+| `escape shift+,` | move to top |
+| `escape shift+.` | move to bottom |
 
 ### Search
 | Keys | Action |

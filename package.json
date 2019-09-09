@@ -21,6 +21,16 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "vsmacs.gotoChar",
+        "title": "VSmacs: Go to Char..."
+      },
+      {
+        "command": "vsmacs.gotoLine",
+        "title": "VSmacs: Go to Line..."
+      }
+    ],
     "keybindings": [
       {
         "key": "ctrl+x 2",
@@ -204,6 +214,14 @@
         "key": "escape shift+,",
         "command": "vsmacs.moveTop",
         "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+g g",
+        "command": "vsmacs.gotoLine"
+      },
+      {
+        "key": "alt+g c",
+        "command": "vsmacs.gotoChar"
       },
       {
         "key": "ctrl+j",

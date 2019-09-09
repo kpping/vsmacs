@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { isNil } from '@ag1/nil';
+import { isNumber } from 'util';
 
 let isMarkMode = false;
 let markStart: vscode.Position | undefined = undefined;
@@ -211,4 +212,76 @@ export function activate(context: vscode.ExtensionContext): void {
         await vscode.commands.executeCommand('vsmacs.clipboardCutAction');
     });
     context.subscriptions.push(killing);
+
+    // go to char
+    const gotoChar = vscode.commands.registerCommand('vsmacs.gotoChar', async () => {
+        const editor = getActiveTextEitor();
+
+        if (isNil(editor)) {
+            return;
+        }
+
+        const validateInput = (numStr: string): string => {
+            const num = parseInt(numStr, 10);
+            const isValid = !isNaN(num) && isNumber(num) && num >= 0;
+
+            return isValid ? '' : 'Please enter a number.';
+        };
+
+        // get value after input box is closed
+        const numStr = await vscode.window.showInputBox({
+            placeHolder: 'Enter character position',
+            prompt: 'Goto char:',
+            validateInput,
+        });
+
+        // if cancel
+        if (isNil(numStr)) {
+            return;
+        }
+
+        // update selection
+        editor.selection = updateSelection(editor.document.positionAt(parseInt(numStr, 10)));
+
+        // scroll to active position
+        const activePosition = editor.selection.active;
+        editor.revealRange(new vscode.Range(activePosition, activePosition));
+    });
+    context.subscriptions.push(gotoChar);
+
+    // go to line
+    const gotoLine = vscode.commands.registerCommand('vsmacs.gotoLine', async () => {
+        const editor = getActiveTextEitor();
+
+        if (isNil(editor)) {
+            return;
+        }
+
+        const validateInput = (numStr: string): string => {
+            const num = parseInt(numStr, 10);
+            const isValid = !isNaN(num) && isNumber(num) && num >= 1;
+
+            return isValid ? '' : 'Please enter a number.';
+        };
+
+        // get value after input box is closed
+        const numStr = await vscode.window.showInputBox({
+            placeHolder: 'Enter line number',
+            prompt: 'Goto line:',
+            validateInput,
+        });
+
+        // if cancel
+        if (isNil(numStr)) {
+            return;
+        }
+
+        // update selection
+        editor.selection = updateSelection(new vscode.Position(parseInt(numStr, 10) - 1, 0));
+
+        // scroll to active position
+        const activePosition = editor.selection.active;
+        editor.revealRange(new vscode.Range(activePosition, activePosition));
+    });
+    context.subscriptions.push(gotoLine);
 }

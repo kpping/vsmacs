@@ -284,4 +284,13 @@ export function activate(context: vscode.ExtensionContext): void {
         editor.revealRange(new vscode.Range(activePosition, activePosition));
     });
     context.subscriptions.push(gotoLine);
+
+    // selectAll
+    const selectAll = vscode.commands.registerCommand('vsmacs.selectAll', async () => {
+        await vscode.commands.executeCommand('vsmacs.stopMarkMode');
+        await vscode.commands.executeCommand('vsmacs.moveBottom');
+        await vscode.commands.executeCommand('vsmacs.toggleMarkMode');
+        await vscode.commands.executeCommand('vsmacs.moveTop');
+    });
+    context.subscriptions.push(selectAll);
 }

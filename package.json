@@ -136,6 +136,11 @@
         "when": "textInputFocus"
       },
       {
+        "key": "ctrl+x h",
+        "command": "vsmacs.selectAll",
+        "when": "textInputFocus"
+      },
+      {
         "key": "right",
         "command": "vsmacs.normalRight",
         "when": "textInputFocus"

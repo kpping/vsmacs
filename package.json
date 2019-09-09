@@ -287,6 +287,10 @@
         "command": "workbench.action.files.save"
       },
       {
+        "key": "ctrl+x s",
+        "command": "workbench.action.files.saveAll"
+      },
+      {
         "key": "ctrl+x ctrl+c",
         "command": "workbench.action.closeWindow",
         "when": "!editorIsOpen && !multipleEditorGroups"

@@ -1,3 +1,6 @@
+## v0.4.0
+* add `ctrl+x u`, `ctrl+_` (undo)
+
 ## v0.3.0
 * add `ctrl+x s` (save all)
 * add `alt+g g` (go to line)

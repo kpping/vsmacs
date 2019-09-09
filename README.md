@@ -55,7 +55,7 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 ### Editing
 | Keys | Action |
 |------|--------|
-| `ctrl+/` | undo |
+| `ctrl+/`, `ctrl+x u`, `ctrl+_` | undo |
 | `ctrl+.` | redo |
 | `ctrl+'` | trigger suggest (autocomplete) |
 | `ctrl+;` | trigger parameter hints |

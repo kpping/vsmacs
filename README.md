@@ -49,6 +49,7 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | Keys | Action |
 |------|--------|
 | `ctrl+x ctrl+s` | save |
+| `ctrl+x s` | save all |
 | `ctrl+x ctrl+f` | quick open (files in project only) |
 
 ### Editing
@@ -66,8 +67,11 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `ctrl+j` | insert line after |
 | `ctrl+d`, `delete` | delete after |
 | `alt+d` | delete word after |
+| `ctrl+x h` | select all |
 
 ### Others
 | Keys | Action |
 |------|--------|
 | `alt+x` | show command bar |
+| `alt+g g` | go to line number |
+| `alt+g c` | go to character position |

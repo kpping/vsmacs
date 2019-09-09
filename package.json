@@ -29,6 +29,14 @@
       {
         "command": "vsmacs.gotoLine",
         "title": "VSmacs: Go to Line..."
+      },
+      {
+        "command": "undo",
+        "title": "Undo"
+      },
+      {
+        "command": "redo",
+        "title": "Redo"
       }
     ],
     "keybindings": [
@@ -271,6 +279,16 @@
       {
         "key": "ctrl+y",
         "command": "vsmacs.clipboardPasteAction",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+x u",
+        "command": "undo",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+shift+-",
+        "command": "undo",
         "when": "textInputFocus && !editorReadonly"
       },
       {

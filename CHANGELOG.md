@@ -1,3 +1,6 @@
+## v0.2.1
+* fix cannot hit `escape` to close suggest widget
+
 ## v0.2.0
 * add `alt+d` (move forward one word)
 * add `alt+b` (move backward one word)

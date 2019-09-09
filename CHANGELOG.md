@@ -1,3 +1,6 @@
+## v0.2.2
+* fix cannot move up & down to select suggestion
+
 ## v0.2.1
 * fix cannot hit `escape` to close suggest widget
 

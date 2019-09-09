@@ -337,11 +337,6 @@
         "when": "editorFocus && renameInputVisible"
       },
       {
-        "key": "escape escape",
-        "command": "vsmacs.stopMarkMode",
-        "when": "textInputFocus"
-      },
-      {
         "key": "ctrl+g",
         "command": "vsmacs.stopMarkMode",
         "when": "textInputFocus"
@@ -470,6 +465,12 @@
         "key": "ctrl+g",
         "command": "workbench.action.hideComment",
         "when": "commentEditorFocused"
+      },
+      {
+        "key": "escape escape",
+        "command": "vsmacs.stopMarkMode",
+        "when": "textInputFocus"
+      },
       }
     ]
   },

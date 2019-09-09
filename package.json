@@ -471,6 +471,10 @@
         "command": "vsmacs.stopMarkMode",
         "when": "textInputFocus"
       },
+      {
+        "key": "escape",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
       }
     ]
   },

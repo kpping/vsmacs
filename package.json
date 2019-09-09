@@ -158,22 +158,22 @@
       {
         "key": "down",
         "command": "vsmacs.normalDown",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !suggestWidgetVisible && !parameterHintsVisible"
       },
       {
         "key": "ctrl+n",
         "command": "vsmacs.moveDown",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !suggestWidgetVisible && !parameterHintsVisible"
       },
       {
         "key": "up",
         "command": "vsmacs.normalUp",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !suggestWidgetVisible && !parameterHintsVisible"
       },
       {
         "key": "ctrl+p",
         "command": "vsmacs.moveUp",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !suggestWidgetVisible && !parameterHintsVisible"
       },
       {
         "key": "home",

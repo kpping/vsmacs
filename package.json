@@ -2,7 +2,7 @@
   "name": "vsmacs",
   "displayName": "VSmacs",
   "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "license": "MIT",
   "publisher": "kpping",
   "engines": {

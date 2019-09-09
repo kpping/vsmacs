@@ -1,3 +1,9 @@
+## v0.3.0
+* add `ctrl+x s` (save all)
+* add `alt+g g` (go to line)
+* add `alt+g c` (go to char)
+* add `ctrl+x h` (select all)
+
 ## v0.2.2
 * fix cannot move up & down to select suggestion
 

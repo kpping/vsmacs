@@ -532,6 +532,11 @@
         "key": "escape",
         "command": "hideSuggestWidget",
         "when": "suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "escape",
+        "command": "removeSecondaryCursors",
+        "when": "editorHasMultipleSelections && textInputFocus"
       }
     ]
   },

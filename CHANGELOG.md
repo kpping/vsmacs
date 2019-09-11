@@ -1,5 +1,8 @@
+## v0.4.1
+* fix cannot `cmd+z (ctrl+z)` `cmd+shift+z (ctrl+y)` on search input
+
 ## v0.4.0
-* add `ctrl+x u`, `ctrl+_` (undo)
+* add `ctrl+x u`, `ctrl+shift+-` (undo)
 
 ## v0.3.0
 * add `ctrl+x s` (save all)

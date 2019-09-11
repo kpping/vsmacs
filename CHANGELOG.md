@@ -1,47 +1,54 @@
+## v0.5.0
+* Change `escape` to `alt` for `move to top` and `move to bottom` command (if more people use `escape` more than `alt`, i will add it back).
+
+  _The reason behind this change is to avoid `key combination is not command`._
+
+* Fix `escape` not cancel multi cursors
+
 ## v0.4.1
-* fix cannot `cmd+z (ctrl+z)` `cmd+shift+z (ctrl+y)` on search input
+* Fix cannot `cmd+z (ctrl+z)` `cmd+shift+z (ctrl+y)` on search input
 
 ## v0.4.0
-* add `ctrl+x u`, `ctrl+shift+-` (undo)
+* Add `ctrl+x u`, `ctrl+shift+-` (undo)
 
 ## v0.3.0
-* add `ctrl+x s` (save all)
-* add `alt+g g` (go to line)
-* add `alt+g c` (go to char)
-* add `ctrl+x h` (select all)
+* Add `ctrl+x s` (save all)
+* Add `alt+g g` (go to line)
+* Add `alt+g c` (go to char)
+* Add `ctrl+x h` (select all)
 
 ## v0.2.2
-* fix cannot move up & down to select suggestion
+* Fix cannot move up & down to select suggestion
 
 ## v0.2.1
-* fix cannot hit `escape` to close suggest widget
+* Fix cannot hit `escape` to close suggest widget
 
 ## v0.2.0
-* add `alt+d` (move forward one word)
-* add `alt+b` (move backward one word)
-* add `ctrl+r` (previous matching)
-* add `alt+d` (delete word after)
+* Add `alt+d` (move forward one word)
+* Add `alt+b` (move backward one word)
+* Add `ctrl+r` (previous matching)
+* Add `alt+d` (delete word after)
 
 ## v0.1.1
-* stop mark mode when hit backspace
-* fix mark mode not stop when pressing `ctrl+g` if selection is empty
+* Stop mark mode when hit backspace
+* Fix mark mode not stop when pressing `ctrl+g` if selection is empty
 
 ## v0.1.0
-* upgrade libs version
-* refactoring code
-* fix (many) incorrect behaviours
+* Upgrade libs version
+* Refactoring code
+* Fix (many) incorrect behaviours
 
 ## v0.0.5
-* [untracked changes, sorry]
+* [Untracked changes, sorry]
 
 ## v0.0.4
-* fix bug cannot use `ctrl+n`, `ctrl+p`, `down`, `up` in widget
+* Fix bug cannot use `ctrl+n`, `ctrl+p`, `down`, `up` in widget
 
 ## v0.0.3
-* update change log
+* Update change log
 
 ## v0.0.2
-* update read me, add repository to package.json
+* Update read me, add repository to package.json
 
 ## v0.0.1
-* first release
+* First release

@@ -524,7 +524,7 @@
         "when": "commentEditorFocused"
       },
       {
-        "key": "escape escape",
+        "key": "escape",
         "command": "vsmacs.stopMarkMode",
         "when": "textInputFocus"
       },

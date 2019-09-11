@@ -15,8 +15,8 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `alt+b` | move backward one word |
 | `ctrl+n` | move down (next line) |
 | `ctrl+p` | move up (previous line) |
-| `escape shift+,` | move to top |
-| `escape shift+.` | move to bottom |
+| `alt+shift+,` | move to top |
+| `alt+shift+.` | move to bottom |
 
 ### Search
 | Keys | Action |

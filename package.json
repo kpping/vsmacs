@@ -219,12 +219,12 @@
         "when": "textInputFocus"
       },
       {
-        "key": "escape shift+.",
+        "key": "alt+shift+.",
         "command": "vsmacs.moveBottom",
         "when": "editorTextFocus"
       },
       {
-        "key": "escape shift+,",
+        "key": "alt+shift+,",
         "command": "vsmacs.moveTop",
         "when": "editorTextFocus"
       },

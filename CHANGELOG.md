@@ -1,3 +1,14 @@
+## v0.6.0
+* update libs, vscode api version, node version
+* refacotring codes
+* write script to include all keybindings into package.json for easier maintainance 
+* add `ctrl+c` (copy)
+* change from `alt+{NUM}` to `ctrl+{NUM}` (openEditorAtIndex{NUM})
+* fix bug `ctrl+y` not paste in windows os
+* fix bug hint, suggestion, list, cannot select by default emacs move
+* add `ctrl+x ctrl+w` (save as)
+* add `ctrl+x k` (same as `ctrl+x ctrl+c`)
+
 ## v0.5.0
 * Change `escape` to `alt` for `move to top` and `move to bottom` command (if more people use `escape` more than `alt`, i will add it back).
 

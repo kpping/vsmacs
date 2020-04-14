@@ -5,7 +5,6 @@ yarn-error.log
 *.tsbuildinfo
 
 src/
-.eslintignore
 .editorconfig
 .eslintrc.json
 .gitignore

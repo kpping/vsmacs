@@ -1,0 +1,21 @@
+[
+  {
+    "key": "ctrl+s",
+    "command": "actions.find"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.nextMatchFindAction",
+    "when": "editorFocus && findInputFocussed"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus && findInputFocussed"
+  },
+  {
+    "key": "enter",
+    "command": "vsmacs.closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
+  }
+]

@@ -37,19 +37,20 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `ctrl+x 2` | split editor horizontal |
 | `ctrl+x 3` | split editor vertical |
 | `ctrl+x o` | navigate between editor groups |
-| `ctrl+x ctrl+c` | close active editor |
+| `ctrl+x ctrl+c` or `ctrl+x k` | close active editor |
 
 ### Tab
 | Keys | Action |
 |------|--------|
 | `cmd+[1-9]` | select tab at [number] index (mac only) |
-| `alt+[1-9]` | select tab at [number] index |
+| `ctrl+[1-9]` | select tab at [number] index |
 
 ### File
 | Keys | Action |
 |------|--------|
 | `ctrl+x ctrl+s` | save |
 | `ctrl+x s` | save all |
+| `ctrl+x ctrl+w` | save as |
 | `ctrl+x ctrl+f` | quick open (files in project only) |
 
 ### Editing

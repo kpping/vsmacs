@@ -493,7 +493,7 @@
       {
         "key": "right",
         "command": "vsmacs.normalRight",
-        "when": "inputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+f",
@@ -533,7 +533,7 @@
       {
         "key": "left",
         "command": "vsmacs.normalLeft",
-        "when": "inputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+b",

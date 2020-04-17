@@ -1,7 +1,10 @@
+## v0.6.1
+* fix bug cannot move cursor by arrow keys when inputFocus
+
 ## v0.6.0
-* update libs, vscode api version, node version
+* update lscode api version, node version
 * refacotring codes
-* write script to include all keybindings into package.json for easier maintainance 
+* write script to include all keybindings into package.json for easier maintainance
 * add `ctrl+c` (copy)
 * change from `alt+{NUM}` to `ctrl+{NUM}` (openEditorAtIndex{NUM})
 * fix bug `ctrl+y` not paste in windows os

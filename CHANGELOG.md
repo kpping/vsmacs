@@ -1,3 +1,6 @@
+## v0.6.2
+* make `home`, `ctrl+a`, `end` to be used as normal key on other input focus
+
 ## v0.6.1
 * fix bug cannot move cursor by arrow keys when inputFocus
 

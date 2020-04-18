@@ -573,17 +573,17 @@
       {
         "key": "home",
         "command": "vsmacs.normalHome",
-        "when": "inputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+a",
         "command": "vsmacs.moveLineStart",
-        "when": "inputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "end",
         "command": "vsmacs.normalEnd",
-        "when": "inputFocus"
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+e",

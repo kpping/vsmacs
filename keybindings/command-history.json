@@ -6,7 +6,7 @@
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+_",
+    "key": "ctrl+shift+-",
     "command": "vsmacs.undo",
     "when": "textInputFocus && !editorReadonly"
   },

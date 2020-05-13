@@ -1,10 +1,16 @@
 const fs = require('fs');
 
 const fileNameList = [
+  'command-basic-move.json',
+  'command-code.json',
   'command-edit.json',
+  'command-escape.json',
   'command-file.json',
-  'command-move.json',
+  'command-history.json',
+  'command-jump-move.json',
+  'command-mark.json',
   'command-search.json',
+  'command-select.json',
   'command-window.json',
 ];
 

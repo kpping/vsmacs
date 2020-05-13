@@ -1,47 +1,28 @@
 import * as vscode from 'vscode';
-import { getState, updateState, IState } from './state';
-import { isNil } from '@ag1/nil';
+import { getState, updateState } from './state';
 
-export function clonePosition({ line, character }: vscode.Position): vscode.Position {
-    return new vscode.Position(line, character);
+// dispose (clear) statusBarMessage if available
+export function disposeStatusBarMessage(): undefined {
+    getState().statusBarMessage?.dispose();
+
+    return undefined;
 }
 
-export function getCurrentPosistion(editor: vscode.TextEditor): vscode.Position {
-    return editor.selection.active;
-}
-
-export function getActiveTextEitor(): vscode.TextEditor | undefined {
-    return vscode.window.activeTextEditor;
-}
-
-export function setMarkMode(position: vscode.Position): IState {
+export function setMarkMode(): boolean {
     return updateState({
         isMarkMode: true,
-        markStart: clonePosition(position),
-        statusBarMsg: vscode.window.setStatusBarMessage('Mark set'),
-    });
+        statusBarMessage: disposeStatusBarMessage() || vscode.window.setStatusBarMessage('Mark set'),
+    }).isMarkMode;
 }
 
-export function unsetMarkMode(): IState {
-    const state = getState();
-
-    if (!isNil(state.statusBarMsg)) {
-        state.statusBarMsg.dispose();
-    }
-
+export function unsetMarkMode(): boolean {
     return updateState({
         isMarkMode: false,
-        markStart: undefined,
-        statusBarMsg: undefined,
-    });
+        statusBarMessage: disposeStatusBarMessage(),
+    }).isMarkMode;
 }
 
-export function updateSelection(lastPosition: vscode.Position): vscode.Selection {
-    const { markStart } = getState();
-
-    if (isNil(markStart)) {
-        return new vscode.Selection(lastPosition, lastPosition);
-    }
-
-    return new vscode.Selection(markStart, lastPosition);
+// hidden api but widely use (it was created for vscode vim)
+export function setContextIsMarkMode(context: vscode.ExtensionContext, isMarkMode: boolean) {
+    return vscode.commands.executeCommand('setContext', 'isMarkMode', isMarkMode);
 }

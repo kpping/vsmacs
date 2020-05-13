@@ -1,29 +1,16 @@
 [
   {
     "key": "ctrl+x ctrl+f",
-    "command": "workbench.action.quickOpen"
+    "command": "workbench.action.files.openFile"
   },
   {
-    "key": "ctrl+x ctrl+c",
-    "command": "workbench.action.closeWindow",
-    "when": "!editorIsOpen && !multipleEditorGroups"
-  },
-  {
-    "key": "ctrl+x ctrl+c",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  {
-    "key": "ctrl+x ctrl+c",
-    "command": "workbench.action.closeGroup",
-    "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    "key": "ctrl+x ctrl+f",
+    "command": "workbench.action.files.openLocalFile",
+    "when": "remoteFileDialogVisible"
   },
   {
     "key": "ctrl+x ctrl+s",
     "command": "workbench.action.files.save"
-  },
-  {
-    "key": "ctrl+x ctrl+w",
-    "command": "workbench.action.files.saveAs"
   },
   {
     "key": "ctrl+x s",

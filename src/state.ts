@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
 
 export interface IState {
-    isMarkMode?: boolean;
+    isMarkMode: boolean;
     markStart?: vscode.Position;
-    statusBarMsg?: vscode.Disposable;
+    statusBarMessage?: vscode.Disposable;
 }
 
 let state: IState = {
@@ -16,9 +16,10 @@ export function getState(): IState {
     };
 }
 
-export function updateState(newState: IState) {
+export function updateState(newState: Partial<IState>) {
+    // side effect
     state = {
-        ...state,
+        ...getState(),
         ...newState,
     };
 

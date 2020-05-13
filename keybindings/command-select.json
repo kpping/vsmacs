@@ -1,0 +1,173 @@
+[
+  {
+    "key": "alt+a",
+    "mac": "cmd+a",
+    "command": "vsmacs.editorActionSelectAll",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+a",
+    "command": "editor.action.webvieweditor.selectAll",
+    "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+  },
+  {
+    "key": "alt+a",
+    "command": "list.selectAll",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "ctrl+x h",
+    "command": "vsmacs.editorActionSelectAll",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+x h",
+    "command": "editor.action.webvieweditor.selectAll",
+    "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+  },
+  {
+    "key": "ctrl+x h",
+    "command": "list.selectAll",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "right",
+    "command": "cursorColumnSelectRight",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "right",
+    "command": "cursorRightSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "cursorColumnSelectRight",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "cursorRightSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "left",
+    "command": "cursorColumnSelectLeft",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "left",
+    "command": "cursorLeftSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "cursorColumnSelectLeft",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "cursorLeftSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "up",
+    "command": "cursorColumnSelectUp",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "up",
+    "command": "cursorUpSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "cursorColumnSelectUp",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "cursorUpSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "down",
+    "command": "cursorColumnSelectDown",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "down",
+    "command": "cursorDownSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "cursorColumnSelectDown",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "cursorDownSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "cursorHomeSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorEndSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "escape shift+,",
+    "command": "cursorColumnSelectPageUp",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "escape shift+,",
+    "command": "cursorPageUpSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "alt+left",
+    "command": "cursorColumnSelectPageUp",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "alt+left",
+    "command": "cursorPageUpSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "escape shift+.",
+    "command": "cursorColumnSelectPageDown",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "escape shift+.",
+    "command": "cursorPageDownSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "cursorColumnSelectPageDown",
+    "when": "isMarkMode && editorColumnSelection && textInputFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "cursorPageDownSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "alt+f",
+    "command": "cursorWordEndRightSelect",
+    "when": "isMarkMode && textInputFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "cursorWordStartLeftSelect",
+    "when": "isMarkMode && textInputFocus"
+  }
+]

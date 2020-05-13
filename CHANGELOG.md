@@ -1,3 +1,8 @@
+## v0.7.0
+* use `setContext` to set `isMarkMode`.
+* fix cursor moving bugs.
+* refactoring
+
 ## v0.6.2
 * make `home`, `ctrl+a`, `end` to be used as normal key on other input focus
 

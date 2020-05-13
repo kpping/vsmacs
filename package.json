@@ -721,29 +721,30 @@
     ]
   },
   "scripts": {
-    "tsc:onlyts": "tsc -b tsconfig-onlyts.json",
-    "tsc:spects": "tsc -b tsconfig-spects.json",
-    "compile": "yarn tsc:onlyts && yarn tsc:spects",
-    "watch": "tsc -b tsconfig-onlyts.json --watch",
+    "add-keybindings": "(cd ./keybindings && node add-keybindings.js)",
+    "build": "npm run-script add-keybindings && npm run-script prettier && npm run-script lint && npm run-script compile && npm run-script test",
+    "compile": "npm run-script tsc:onlyts && npm run-script tsc:spects",
     "lint": "eslint --ext .ts ./src --fix",
     "prettier:config": "prettier --no-config --write \"./**/*.{json,yml}\"",
     "prettier:ts": "prettier --write \"./**/*.ts\"",
-    "prettier": "yarn prettier:config --loglevel warn && yarn prettier:ts --loglevel warn",
+    "prettier": "npm run-script prettier:config --loglevel warn && npm run-script prettier:ts --loglevel warn",
     "test": "jest --passWithNoTests",
-    "build": "yarn prettier && yarn lint && yarn compile && yarn test"
+    "tsc:onlyts": "tsc -b tsconfig-onlyts.json",
+    "tsc:spects": "tsc -b tsconfig-spects.json",
+    "watch": "npm run-script tsc:onlyts --watch"
   },
   "dependencies": {
-    "@ag1/nil": "^1.1.0"
+    "@ag1/nil": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^25.2.1",
-    "@types/node": "^12",
+    "@types/node": "^12.12.39",
     "@types/vscode": "^1.44.0",
-    "@typescript-eslint/eslint-plugin": "^2.28.0",
-    "@typescript-eslint/parser": "^2.28.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-json": "^2.1.1",
@@ -751,7 +752,7 @@
     "jest": "^25.3.0",
     "prettier": "^2.0.4",
     "ts-jest": "^25.3.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2"
   },
   "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",
   "bugs": "https://github.com/kpping/vsmacs/issues",

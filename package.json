@@ -1035,7 +1035,7 @@
         "when": "textInputFocus && !editorReadonly"
       },
       {
-        "key": "ctrl+_",
+        "key": "ctrl+shift+-",
         "command": "vsmacs.undo",
         "when": "textInputFocus && !editorReadonly"
       },
@@ -1140,12 +1140,12 @@
         "when": "notificationFocus && notificationToastsVisible"
       },
       {
-        "key": "escape <",
+        "key": "escape shift+,",
         "command": "cursorPageUp",
         "when": "textInputFocus"
       },
       {
-        "key": "escape >",
+        "key": "escape shift+.",
         "command": "cursorPageDown",
         "when": "textInputFocus"
       },

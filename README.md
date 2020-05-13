@@ -15,8 +15,8 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | `alt+b` | move backward one word |
 | `ctrl+n` | move down (next line) |
 | `ctrl+p` | move up (previous line) |
-| `alt+shift+,` | move to top |
-| `alt+shift+.` | move to bottom |
+| `esc <` | move to top |
+| `esc >` | move to bottom |
 
 ### Search
 | Keys | Action |
@@ -32,12 +32,11 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 ### Screen and Editor
 | Keys | Action |
 |------|--------|
-| `ctrl+x 0` | close active editor group |
-| `ctrl+x 1` | close others editor group |
+| `ctrl+x 0` | close active editor |
 | `ctrl+x 2` | split editor horizontal |
 | `ctrl+x 3` | split editor vertical |
 | `ctrl+x o` | navigate between editor groups |
-| `ctrl+x ctrl+c` or `ctrl+x k` | close active editor |
+| `ctrl+x ctrl+c` | close editors in group |
 
 ### Tab
 | Keys | Action |
@@ -50,23 +49,22 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 |------|--------|
 | `ctrl+x ctrl+s` | save |
 | `ctrl+x s` | save all |
-| `ctrl+x ctrl+w` | save as |
 | `ctrl+x ctrl+f` | quick open (files in project only) |
 
 ### Editing
 | Keys | Action |
 |------|--------|
-| `ctrl+/`, `ctrl+x u`, `ctrl+shift+-` | undo |
+| `ctrl+/`, `ctrl+x u`, `ctrl+_` | undo |
 | `ctrl+.` | redo |
 | `ctrl+'` | trigger suggest (autocomplete) |
-| `ctrl+;` | trigger parameter hints |
+| `ctrl+;` | quick fix |
 | `ctrl+space` | toggle mark mode |
 | `alt+w` | copy to clipboard |
 | `ctrl+w` | cut to clipboard |
 | `ctrl+y` | paste from clipboard |
 | `ctrl+k` | kill to clipboard |
 | `ctrl+j` | insert line after |
-| `ctrl+d`, `delete` | delete after |
+| `ctrl+d` | delete after |
 | `alt+d` | delete word after |
 | `ctrl+x h` | select all |
 
@@ -74,5 +72,3 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 | Keys | Action |
 |------|--------|
 | `alt+x` | show command bar |
-| `alt+g g` | go to line number |
-| `alt+g c` | go to character position |

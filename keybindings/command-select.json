@@ -112,12 +112,12 @@
   },
   {
     "key": "ctrl+a",
-    "command": "cursorHomeSelect",
+    "command": "cursorLineStartSelect",
     "when": "isMarkMode && textInputFocus"
   },
   {
     "key": "ctrl+e",
-    "command": "cursorEndSelect",
+    "command": "cursorLineEndSelect",
     "when": "isMarkMode && textInputFocus"
   },
   {

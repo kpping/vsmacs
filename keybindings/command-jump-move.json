@@ -16,7 +16,7 @@
   },
   {
     "key": "ctrl+a",
-    "command": "cursorHome",
+    "command": "cursorLineStart",
     "when": "textInputFocus"
   },
   {
@@ -45,7 +45,7 @@
   },
   {
     "key": "ctrl+e",
-    "command": "cursorEnd",
+    "command": "cursorLineEnd",
     "when": "textInputFocus"
   },
   {

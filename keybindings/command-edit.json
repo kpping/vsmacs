@@ -25,7 +25,6 @@
     "when": "isMarkMode && textInputFocus"
   },
   {
-    "key": "ctrl+x",
     "mac": "cmd+x",
     "command": "vsmacs.editorActionClipboardCutAction",
     "when": "textInputFocus && !editorReadonly"

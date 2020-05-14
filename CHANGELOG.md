@@ -1,3 +1,7 @@
+## v0.8.0
+* add local `Mark Mode`
+* fix bug incorrect behaviour of `ctrl+a` and `ctrl+e`
+
 ## v0.7.0
 * use `setContext` to set `isMarkMode`.
 * fix cursor moving bugs.

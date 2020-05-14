@@ -321,7 +321,6 @@
         "when": "isMarkMode && textInputFocus"
       },
       {
-        "key": "ctrl+x",
         "mac": "cmd+x",
         "command": "vsmacs.editorActionClipboardCutAction",
         "when": "textInputFocus && !editorReadonly"
@@ -1092,7 +1091,7 @@
       },
       {
         "key": "ctrl+a",
-        "command": "cursorHome",
+        "command": "cursorLineStart",
         "when": "textInputFocus"
       },
       {
@@ -1121,7 +1120,7 @@
       },
       {
         "key": "ctrl+e",
-        "command": "cursorEnd",
+        "command": "cursorLineEnd",
         "when": "textInputFocus"
       },
       {
@@ -1383,12 +1382,12 @@
       },
       {
         "key": "ctrl+a",
-        "command": "cursorHomeSelect",
+        "command": "cursorLineStartSelect",
         "when": "isMarkMode && textInputFocus"
       },
       {
         "key": "ctrl+e",
-        "command": "cursorEndSelect",
+        "command": "cursorLineEndSelect",
         "when": "isMarkMode && textInputFocus"
       },
       {

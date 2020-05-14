@@ -49,7 +49,7 @@ Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep o
 |------|--------|
 | `ctrl+x ctrl+s` | save |
 | `ctrl+x s` | save all |
-| `ctrl+x ctrl+f` | quick open (files in project only) |
+| `ctrl+x ctrl+f` | open local file |
 
 ### Editing
 | Keys | Action |

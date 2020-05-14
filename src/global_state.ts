@@ -1,19 +1,13 @@
 import * as vscode from 'vscode';
 
 export interface IState {
-    isMarkMode: boolean;
-    markStart?: vscode.Position;
     statusBarMessage?: vscode.Disposable;
 }
 
-let state: IState = {
-    isMarkMode: false,
-};
+let state: IState = {};
 
 export function getState(): IState {
-    return {
-        ...state,
-    };
+    return { ...state };
 }
 
 export function updateState(newState: Partial<IState>) {

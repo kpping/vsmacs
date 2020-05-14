@@ -1,25 +1,27 @@
 import * as vscode from 'vscode';
-import { getState, updateState } from './state';
+import { updateState, IState } from './editor_state';
+import { refreshUI } from './ui';
 
-// dispose (clear) statusBarMessage if available
-export function disposeStatusBarMessage(): undefined {
-    getState().statusBarMessage?.dispose();
-
-    return undefined;
-}
-
-export function setMarkMode(): boolean {
-    return updateState({
+export function setMarkModeState(editor: vscode.TextEditor): IState {
+    const state = updateState(editor, {
         isMarkMode: true,
-        statusBarMessage: disposeStatusBarMessage() || vscode.window.setStatusBarMessage('Mark set'),
-    }).isMarkMode;
+        statusBarMessageStr: 'Mark Mode',
+    });
+
+    refreshUI(state);
+
+    return state;
 }
 
-export function unsetMarkMode(): boolean {
-    return updateState({
+export function unsetMarkModeState(editor: vscode.TextEditor): IState {
+    const state = updateState(editor, {
         isMarkMode: false,
-        statusBarMessage: disposeStatusBarMessage(),
-    }).isMarkMode;
+        statusBarMessageStr: undefined,
+    });
+
+    refreshUI(state);
+
+    return state;
 }
 
 // hidden api but widely use (it was created for vscode vim)

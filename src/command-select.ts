@@ -1,10 +1,13 @@
 import * as vscode from 'vscode';
-import { setContextIsMarkMode, setMarkMode } from './utils';
+import { setContextIsMarkMode, setMarkModeState } from './utils';
 
 export function activate(context: vscode.ExtensionContext): void {
-    const vsmacsEditorActionSelectAll = vscode.commands.registerCommand('vsmacs.editorActionSelectAll', async () => {
-        await setContextIsMarkMode(context, setMarkMode());
-        await vscode.commands.executeCommand('editor.action.selectAll');
-    });
+    const vsmacsEditorActionSelectAll = vscode.commands.registerTextEditorCommand(
+        'vsmacs.editorActionSelectAll',
+        async (editor) => {
+            await setContextIsMarkMode(context, setMarkModeState(editor).isMarkMode);
+            await vscode.commands.executeCommand('editor.action.selectAll');
+        },
+    );
     context.subscriptions.push(vsmacsEditorActionSelectAll);
 }

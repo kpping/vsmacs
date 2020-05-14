@@ -1,18 +1,21 @@
 import * as vscode from 'vscode';
-import { activate as activateCode } from './command-code';
-import { activate as activateEdit } from './command-edit';
-import { activate as activateEscape } from './command-escape';
-import { activate as activateHistory } from './command-history';
-import { activate as activateMark } from './command-mark';
-import { activate as activateSelect } from './command-select';
-import { activate as activateWindow } from './command-window';
+import { activate as activateCommandCode } from './command-code';
+import { activate as activateCommandEdit } from './command-edit';
+import { activate as activateCommandEscape } from './command-escape';
+import { activate as activateCommandHistory } from './command-history';
+import { activate as activateCommandMark } from './command-mark';
+import { activate as activateCommandSelect } from './command-select';
+import { activate as activateCommandWindow } from './command-window';
+import { activate as activateEventWindow } from './event-window';
 
 export function activate(context: vscode.ExtensionContext): void {
-    activateCode(context);
-    activateEdit(context);
-    activateEscape(context);
-    activateHistory(context);
-    activateMark(context);
-    activateSelect(context);
-    activateWindow(context);
+    activateCommandCode(context);
+    activateCommandEdit(context);
+    activateCommandEscape(context);
+    activateCommandHistory(context);
+    activateCommandMark(context);
+    activateCommandSelect(context);
+    activateCommandWindow(context);
+
+    activateEventWindow(context);
 }

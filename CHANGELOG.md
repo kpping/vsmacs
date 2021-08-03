@@ -1,7 +1,7 @@
 ## v0.11.0
 
 - use event to start select mode if selection is not empty
-- use event to stop select mode is selection is empty
+- use event to stop select mode if selection is empty
 
 ## v0.10.0
 

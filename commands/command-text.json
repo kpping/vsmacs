@@ -34,7 +34,7 @@
   {
     "key": "ctrl+k",
     "command": "vsmacs.utils.commands",
-    "args": ["vsmacs.selectMode.start", "cursorLineEndSelect", "editor.action.clipboardCutAction"],
+    "args": ["cursorLineEndSelect", "editor.action.clipboardCutAction"],
     "when": "textInputFocus"
   },
   {

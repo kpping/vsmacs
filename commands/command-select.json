@@ -1,0 +1,166 @@
+[
+  {
+    "key": "ctrl+space",
+    "command": "vsmacs.selectMode.start",
+    "when": "textInputFocus && !editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && !editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && !editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "escape",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "escape",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && !editorHasSelection && vsmacs.selectMode.value"
+  },
+  {
+    "key": "escape",
+    "command": "vsmacs.selectMode.stop",
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "cursorRightSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "cursorLeftSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "cursorUpSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "cursorDownSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "cursorLineStartSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorLineEndSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorRightSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorLeftSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorUpSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorDownSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorLineStartSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorLineEndSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+f",
+    "command": "cursorWordEndRightSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+f",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorWordEndRightSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+b",
+    "command": "cursorWordLeftSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+b",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorWordLeftSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+x h",
+    "command": "editor.action.selectAll"
+  },
+  {
+    "key": "ctrl+x shift+,",
+    "command": "cursorTopSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+x shift+,",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorTopSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+x shift+.",
+    "command": "cursorBottomSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+x shift+.",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorBottomSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  }
+]

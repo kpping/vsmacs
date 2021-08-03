@@ -1,0 +1,18 @@
+[
+  {
+    "key": "ctrl+x 3",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "ctrl+x 2",
+    "command": "workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "ctrl+x 0",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+x o",
+    "command": "workbench.action.focusNextGroup"
+  }
+]

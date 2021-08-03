@@ -1,0 +1,18 @@
+[
+  {
+    "key": "ctrl+/",
+    "command": "undo"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "undo"
+  },
+  {
+    "key": "ctrl+x u",
+    "command": "undo"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "redo"
+  }
+]

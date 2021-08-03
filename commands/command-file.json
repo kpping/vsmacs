@@ -1,0 +1,26 @@
+[
+  {
+    "key": "ctrl+x ctrl+s",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "key": "ctrl+x s",
+    "command": "workbench.action.files.saveAll"
+  },
+  {
+    "key": "ctrl+x ctrl+w",
+    "command": "workbench.action.files.saveAs"
+  },
+  {
+    "key": "ctrl+x ctrl+f",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+x ctrl+c",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+x ctrl+b",
+    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+  }
+]

@@ -1,21 +1,56 @@
 import * as vscode from 'vscode';
-import { activate as activateCommandCode } from './command-code';
-import { activate as activateCommandEdit } from './command-edit';
-import { activate as activateCommandEscape } from './command-escape';
-import { activate as activateCommandHistory } from './command-history';
-import { activate as activateCommandMark } from './command-mark';
-import { activate as activateCommandSelect } from './command-select';
-import { activate as activateCommandWindow } from './command-window';
-import { activate as activateEventWindow } from './event-window';
 
-export function activate(context: vscode.ExtensionContext): void {
-    activateCommandCode(context);
-    activateCommandEdit(context);
-    activateCommandEscape(context);
-    activateCommandHistory(context);
-    activateCommandMark(context);
-    activateCommandSelect(context);
-    activateCommandWindow(context);
+let isSelectMode = false;
 
-    activateEventWindow(context);
+const markSetStatusBar = vscode.window.createStatusBarItem();
+markSetStatusBar.text = 'Mark set';
+
+export function activate(context: vscode.ExtensionContext) {
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'vsmacs.utils.commands',
+      async (args: string[]) => {
+        for (const command of args) {
+          await vscode.commands.executeCommand(command);
+        }
+      }
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand('vsmacs.selectMode.update', async () => {
+      await vscode.commands.executeCommand(
+        'setContext',
+        'vsmacs.selectMode.value',
+        isSelectMode
+      );
+
+      if (isSelectMode === false) {
+        await vscode.commands.executeCommand('cancelSelection');
+        markSetStatusBar.hide();
+      } else {
+        markSetStatusBar.show();
+      }
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand('vsmacs.selectMode.start', async () => {
+      // switch mode
+      isSelectMode = true;
+
+      await vscode.commands.executeCommand('vsmacs.selectMode.update');
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand('vsmacs.selectMode.stop', async () => {
+      // switch mode
+      isSelectMode = false;
+
+      await vscode.commands.executeCommand('vsmacs.selectMode.update');
+    })
+  );
 }
+
+export function deactivate() {}

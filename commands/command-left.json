@@ -1,0 +1,52 @@
+[
+  {
+    "key": "ctrl+b",
+    "command": "notebook.fold",
+    "when": "notebookEditorFocused && !inputFocus && activeEditor == 'workbench.editor.notebook'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "settings.action.focusTOC",
+    "when": "inSettingsEditor && settingRowFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "gettingStarted.prev",
+    "when": "inWelcome && activeEditor == 'gettingStartedPage'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "cursorLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "list.collapse",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "notification.collapse",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "previousCompressedFolder",
+    "when": "explorerViewletCompressedFocus && explorerViewletVisible && filesExplorerFocus && !explorerViewletCompressedFirstFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.banner.focusPreviousAction",
+    "when": "bannerFocused"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.statusBar.focusPrevious",
+    "when": "statusBarFocused"
+  }
+]

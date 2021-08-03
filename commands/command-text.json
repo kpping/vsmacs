@@ -1,0 +1,95 @@
+[
+  {
+    "key": "alt+w",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardCopyAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardCutAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardPasteAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardCopyAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+x",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardCutAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+x x",
+    "command": "vsmacs.utils.commands",
+    "args": ["editor.action.clipboardCutAction", "vsmacs.selectMode.stop"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "vsmacs.utils.commands",
+    "args": [
+      "vsmacs.selectMode.start",
+      "cursorLineEndSelect",
+      "editor.action.clipboardCutAction",
+      "vsmacs.selectMode.stop"
+    ],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "vsmacs.utils.commands",
+    "args": [
+      "vsmacs.selectMode.stop",
+      "lineBreakInsert",
+      "cursorDown",
+      "cursorHome"
+    ],
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "vsmacs.utils.commands",
+    "args": [
+      "vsmacs.selectMode.stop",
+      "lineBreakInsert",
+      "cursorDown",
+      "cursorHome"
+    ],
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.stop", "lineBreakInsert"],
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.stop", "deleteRight"],
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+backspace",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.stop", "deleteWordLeft"],
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+d",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.stop", "deleteWordRight"],
+    "when": "textInputFocus && !editorReadonly"
+  }
+]

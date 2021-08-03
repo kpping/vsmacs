@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { setSelectMode, isSelectMode } from './selection';
+import { getEditorId, setSelectMode, isSelectMode } from './selection';
 import { showMarkSetStatusBar, hideMarkSetStatusBar, disposeMarkSetStatusBar } from './status-bar';
 
 const diposableList: vscode.Disposable[] = [];

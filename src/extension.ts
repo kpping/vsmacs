@@ -57,6 +57,17 @@ export function activate(context: vscode.ExtensionContext) {
       }
     })
   );
+
+  diposableList.push(
+    vscode.window.onDidChangeTextEditorSelection(async (e) => {
+      // e.textEditor = vscode.window.activeTextEditor;
+      if (!e.textEditor.selection.isEmpty && !isSelectMode(getEditorId(e.textEditor))) {
+        await vscode.commands.executeCommand('vsmacs.selectMode.start');
+      } else if (e.textEditor.selection.isEmpty && isSelectMode(getEditorId(e.textEditor))) {
+        await vscode.commands.executeCommand('vsmacs.selectMode.stop');
+      }
+    })
+  );
 }
 
 export function deactivate() {

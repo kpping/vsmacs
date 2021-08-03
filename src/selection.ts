@@ -2,10 +2,8 @@ import * as vscode from 'vscode';
 
 const selectModeMap = new Map();
 
-export function getActiveEditorId(): string {
-  return `${
-    vscode.window.activeTextEditor?.viewColumn || 0
-  }${vscode.window.activeTextEditor?.document.uri.toString()}`;
+export function getActiveEditorId(editor = vscode.window.activeTextEditor): string {
+  return `${editor?.viewColumn || 0}${editor?.document.uri.toString()}`;
 }
 
 export function setSelectMode(

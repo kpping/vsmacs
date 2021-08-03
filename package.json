@@ -2,7 +2,7 @@
   "name": "vsmacs",
   "displayName": "VSmacs",
   "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "license": "MIT",
   "publisher": "kpping",
   "engines": {
@@ -763,20 +763,12 @@
       },
       {
         "key": "ctrl+w",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "editor.action.clipboardCutAction",
-          "vsmacs.selectMode.stop"
-        ],
+        "command": "editor.action.clipboardCutAction",
         "when": "textInputFocus"
       },
       {
         "key": "ctrl+y",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "editor.action.clipboardPasteAction",
-          "vsmacs.selectMode.stop"
-        ],
+        "command": "editor.action.clipboardPasteAction",
         "when": "textInputFocus"
       },
       {
@@ -790,20 +782,12 @@
       },
       {
         "key": "ctrl+x ctrl+x",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "editor.action.clipboardCutAction",
-          "vsmacs.selectMode.stop"
-        ],
+        "command": "editor.action.clipboardCutAction",
         "when": "textInputFocus"
       },
       {
         "key": "ctrl+x x",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "editor.action.clipboardCutAction",
-          "vsmacs.selectMode.stop"
-        ],
+        "command": "editor.action.clipboardCutAction",
         "when": "textInputFocus"
       },
       {
@@ -812,8 +796,7 @@
         "args": [
           "vsmacs.selectMode.start",
           "cursorLineEndSelect",
-          "editor.action.clipboardCutAction",
-          "vsmacs.selectMode.stop"
+          "editor.action.clipboardCutAction"
         ],
         "when": "textInputFocus"
       },
@@ -821,7 +804,6 @@
         "key": "ctrl+j",
         "command": "vsmacs.utils.commands",
         "args": [
-          "vsmacs.selectMode.stop",
           "lineBreakInsert",
           "cursorDown",
           "cursorHome"
@@ -832,7 +814,6 @@
         "key": "ctrl+m",
         "command": "vsmacs.utils.commands",
         "args": [
-          "vsmacs.selectMode.stop",
           "lineBreakInsert",
           "cursorDown",
           "cursorHome"
@@ -841,38 +822,22 @@
       },
       {
         "key": "ctrl+o",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "vsmacs.selectMode.stop",
-          "lineBreakInsert"
-        ],
+        "command": "lineBreakInsert",
         "when": "editorTextFocus && !editorReadonly"
       },
       {
         "key": "ctrl+d",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "vsmacs.selectMode.stop",
-          "deleteRight"
-        ],
+        "command": "deleteRight",
         "when": "textInputFocus"
       },
       {
         "key": "alt+backspace",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "vsmacs.selectMode.stop",
-          "deleteWordLeft"
-        ],
+        "command": "deleteWordLeft",
         "when": "textInputFocus && !editorReadonly"
       },
       {
         "key": "alt+d",
-        "command": "vsmacs.utils.commands",
-        "args": [
-          "vsmacs.selectMode.stop",
-          "deleteWordRight"
-        ],
+        "command": "deleteWordRight",
         "when": "textInputFocus && !editorReadonly"
       },
       {

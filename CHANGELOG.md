@@ -1,3 +1,9 @@
+## v0.10.0
+
+- each editor has it own select mode
+- use event to update select mode
+- dispose event(s), object(s) in deactivate
+
 ## v0.9.0
 
 - upgrade libs

@@ -1,35 +1,27 @@
 import * as vscode from 'vscode';
+import { setSelectMode, isSelectMode } from './selection';
+import { showMarkSetStatusBar, hideMarkSetStatusBar, disposeMarkSetStatusBar } from './status-bar';
 
-let isSelectMode = false;
-
-const markSetStatusBar = vscode.window.createStatusBarItem();
-markSetStatusBar.text = 'Mark set';
+const diposableList: vscode.Disposable[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand(
-      'vsmacs.utils.commands',
-      async (args: string[]) => {
-        for (const command of args) {
-          await vscode.commands.executeCommand(command);
-        }
+    vscode.commands.registerCommand('vsmacs.utils.commands', async (args: string[]) => {
+      for (const command of args) {
+        await vscode.commands.executeCommand(command);
       }
-    )
+    })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.selectMode.update', async () => {
-      await vscode.commands.executeCommand(
-        'setContext',
-        'vsmacs.selectMode.value',
-        isSelectMode
-      );
+      await vscode.commands.executeCommand('setContext', 'vsmacs.selectMode.value', isSelectMode());
 
-      if (isSelectMode === false) {
+      if (isSelectMode() === false) {
         await vscode.commands.executeCommand('cancelSelection');
-        markSetStatusBar.hide();
+        hideMarkSetStatusBar();
       } else {
-        markSetStatusBar.show();
+        showMarkSetStatusBar();
       }
     })
   );
@@ -37,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.selectMode.start', async () => {
       // switch mode
-      isSelectMode = true;
+      setSelectMode(true);
 
       await vscode.commands.executeCommand('vsmacs.selectMode.update');
     })
@@ -46,11 +38,29 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.selectMode.stop', async () => {
       // switch mode
-      isSelectMode = false;
+      setSelectMode(false);
 
       await vscode.commands.executeCommand('vsmacs.selectMode.update');
     })
   );
+
+  diposableList.push(
+    vscode.window.onDidChangeActiveTextEditor(async () => {
+      await vscode.commands.executeCommand('vsmacs.selectMode.update');
+    })
+  );
+
+  diposableList.push(
+    vscode.workspace.onDidChangeTextDocument(async () => {
+      if (isSelectMode()) {
+        await vscode.commands.executeCommand('vsmacs.selectMode.stop');
+      }
+    })
+  );
 }
 
-export function deactivate() {}
+export function deactivate() {
+  diposableList.forEach((d) => d.dispose());
+
+  disposeMarkSetStatusBar();
+}

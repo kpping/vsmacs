@@ -1,78 +1,103 @@
 # VSmacs
 
-Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things. Keep over engineer as low as possible.
+Emacs-style key bindings for Visual Studio Code. No kill ring, no extra chrome. The goal is to keep over-engineering to a minimum.
+
+## Requirements
+
+- [Visual Studio Code](https://code.visualstudio.com/) **1.90** or newer (see `engines.vscode` in `package.json`).
 
 ## Features
 
-### Basic Move
+### Basic move
 
 | Keys       | Action                        |
 | ---------- | ----------------------------- |
-| `ctrl+a`   | move to beginning of the line |
-| `ctrl+e`   | move to end of the line       |
-| `ctrl+f`   | move forward                  |
-| `alt+f`    | move forward one word         |
-| `ctrl+b`   | move backward                 |
-| `alt+b`    | move backward one word        |
-| `ctrl+n`   | move down (next line)         |
-| `ctrl+p`   | move up (previous line)       |
-| `ctrl+x <` | move to top                   |
-| `ctrl+x >` | move to bottom                |
+| `ctrl+a`   | Move to beginning of the line |
+| `ctrl+e`   | Move to end of the line     |
+| `ctrl+f`   | Move forward                  |
+| `alt+f`    | Move forward one word         |
+| `ctrl+b`   | Move backward                 |
+| `alt+b`    | Move backward one word        |
+| `ctrl+n`   | Move down (next line)         |
+| `ctrl+p`   | Move up (previous line)       |
+| `ctrl+x <` | Move to top                   |
+| `ctrl+x >` | Move to bottom                |
 
 ### Search
 
 | Keys     | Action                         |
 | -------- | ------------------------------ |
-| `ctrl+s` | open search, next matching     |
-| `ctrl+r` | open search, previous matching |
+| `ctrl+s` | Open search, next match        |
+| `ctrl+r` | Open search, previous match    |
 
-### Cancel, Close Widget
+### Cancel, close widget
 
 | Keys     | Action        |
 | -------- | ------------- |
-| `ctrl+g` | cancel, close |
+| `ctrl+g` | Cancel, close |
 
-### Screen and Editor
+### Screen and editor
 
 | Keys            | Action                         |
 | --------------- | ------------------------------ |
-| `ctrl+x ctrl+c` | close active editor            |
-| `ctrl+x 0`      | close active editor            |
-| `ctrl+x 2`      | split editor horizontal        |
-| `ctrl+x 3`      | split editor vertical          |
-| `ctrl+x o`      | navigate between editor groups |
+| `ctrl+x ctrl+c` | Close active editor            |
+| `ctrl+x 0`      | Close active editor            |
+| `ctrl+x 2`      | Split editor horizontally      |
+| `ctrl+x 3`      | Split editor vertically        |
+| `ctrl+x o`      | Focus next editor group        |
 
 ### File
 
 | Keys            | Action                    |
 | --------------- | ------------------------- |
-| `ctrl+x ctrl+s` | save                      |
-| `ctrl+x s`      | save all                  |
-| `ctrl+x ctrl+w` | save as                   |
-| `ctrl+x ctrl+f` | open file within explorer |
-| `ctrl+x ctrl+b` | open recently used file   |
+| `ctrl+x ctrl+s` | Save                      |
+| `ctrl+x s`      | Save all                  |
+| `ctrl+x ctrl+w` | Save as                   |
+| `ctrl+x ctrl+f` | Quick open                |
+| `ctrl+x ctrl+b` | Open recently used editor   |
 
 ### Editing
 
-| Keys                           | Action                         |
-| ------------------------------ | ------------------------------ |
-| `ctrl+/`, `ctrl+x u`, `ctrl+_` | undo                           |
-| `ctrl+.`                       | redo                           |
-| `ctrl+'`, `ctrl+x space`       | trigger suggest (autocomplete) |
-| `ctrl+;`, `ctrl+x .`           | quick fix                      |
-| `ctrl+space`                   | toggle mark mode               |
-| `alt+w`                        | copy to clipboard              |
-| `ctrl+w`                       | cut to clipboard               |
-| `ctrl+y`                       | paste from clipboard           |
-| `ctrl+k`                       | kill to clipboard              |
-| `ctrl+j`, `ctrl+m`, `ctrl+o`   | insert line after              |
-| `ctrl+d`                       | delete after                   |
-| `alt+d`                        | delete word after              |
-| `ctrl+x h`                     | select all                     |
-| `alt+/`, `ctrl+x /`            | comment                        |
+| Keys                            | Action                          |
+| ------------------------------- | ------------------------------- |
+| `ctrl+/`, `ctrl+x u`, `ctrl+_`  | Undo                            |
+| `ctrl+.`                        | Redo                            |
+| `ctrl+'`, `ctrl+x space`        | Trigger suggest (autocomplete)  |
+| `ctrl+;`, `ctrl+x .`            | Quick fix                       |
+| `ctrl+space`                    | Toggle mark mode                |
+| `alt+w`                         | Copy to clipboard               |
+| `ctrl+w`                        | Cut to clipboard                |
+| `ctrl+y`                        | Paste from clipboard            |
+| `ctrl+k`                        | Kill line (cut)                 |
+| `ctrl+j`, `ctrl+m`, `ctrl+o`    | Insert line after               |
+| `ctrl+d`                        | Delete after                    |
+| `alt+d`                         | Delete word after               |
+| `ctrl+x h`                      | Select all                      |
+| `alt+/`, `ctrl+x /`             | Toggle line comment             |
 
-### Others
+### Other
 
-| Keys    | Action                   |
-| ------- | ------------------------ |
-| `alt+x` | show all commands widget |
+| Keys    | Action              |
+| ------- | ------------------- |
+| `alt+x` | Command palette   |
+
+## Development
+
+This repo uses [Bun](https://bun.sh/) for installs and scripts (`packageManager` in `package.json`). For local Node/Bun versions, [mise](https://mise.jdx.dev/) reads `.tool-versions`.
+
+| Command            | Description                                                |
+| ------------------ | ---------------------------------------------------------- |
+| `bun install`      | Install dependencies (including the TypeScript compiler). |
+| `bun run compile`  | Emit JavaScript to `out/` (used by the published extension). |
+| `bun run watch`    | Same as compile in watch mode (default VS Code build task). |
+| `bun run generate` | Compile, then merge `commands/command-*.json` into `package.json` `contributes.keybindings`. Run this after editing those JSON files. |
+| `bun run lint`     | [Biome](https://biomejs.dev/) check (lint + format check). |
+| `bun run format`   | Biome check with `--write` (format and safe fixes).        |
+
+Linting and formatting are handled by **Biome** only (no ESLint or Prettier). The workspace recommends the [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
+
+To try the extension in a VS Code window: open this folder, run **Run Extension** from the Run and Debug view (see `.vscode/launch.json`).
+
+## License
+
+MIT. See `package.json` for links, repository, and publisher metadata.

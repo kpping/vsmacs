@@ -1,3 +1,14 @@
+## v0.12.0
+
+- Document development workflow in the README (Bun scripts, Biome, keybinding generator).
+- Switch the project from npm to **Bun** (`packageManager`, `bun.lock`, scripts).
+- Replace **ESLint** and **Prettier** with **Biome** for lint and format (`biome.json`, `bun run lint` / `bun run format`).
+- Raise the VS Code engine to **^1.90** and use **`onStartupFinished`** instead of the deprecated `*` activation event.
+- Tooling: TypeScript 5.7, stricter `tsconfig`, Node **>=20.19** in `engines`, Bun in `.tool-versions` for mise users.
+- Extension code: register listeners on `context.subscriptions`, fix `getEditorId` when no editor is active, lazy status bar creation and disposal, initial select-mode context sync.
+- Keybindings: add missing **`ctrl+g`** on `editor.debug.action.closeExceptionWidget` in `commands/command-esc.json`.
+- Generator: read JSON without `require`, write formatted `package.json`, use `node:fs` / `node:path`.
+
 ## v0.11.0
 
 - use event to start select mode if selection is not empty

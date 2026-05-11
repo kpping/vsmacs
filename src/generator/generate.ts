@@ -1,38 +1,45 @@
-import * as path from 'path';
-import * as fs from 'fs';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 const PKG_JSON_PATH = path.join(__dirname, '../../package.json');
 
-type CommandType = { key: string; command: string; when: string };
+type KeybindingEntry = { key?: string; command: string; when?: string };
 
-const pkg: {
-  contributes: { keybindings: CommandType[] };
-} = require(PKG_JSON_PATH);
-
-function getCommandList(path: string): CommandType[] {
-  return require(path);
+function readJson<T>(filePath: string): T {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T;
 }
 
-function getCommandPath(str: string): string {
-  return path.join(__dirname, `../../commands/command-${str}.json`);
+function getCommandPath(segment: string): string {
+  return path.join(__dirname, `../../commands/command-${segment}.json`);
 }
 
-pkg.contributes.keybindings = [
-  'down',
-  'jump',
-  'left',
-  'right',
-  'up',
-  'history',
-  'search',
-  'esc',
-  'select',
-  'text',
-  'file',
-  'window',
-  'help',
-]
-  .map((str) => getCommandList(getCommandPath(str)))
-  .reduce((prev, curr) => [...prev, ...curr], []);
+function main(): void {
+  const pkg = readJson<{
+    contributes: { keybindings: KeybindingEntry[] };
+    [key: string]: unknown;
+  }>(PKG_JSON_PATH);
 
-fs.writeFileSync(PKG_JSON_PATH, JSON.stringify(pkg));
+  const segments = [
+    'down',
+    'jump',
+    'left',
+    'right',
+    'up',
+    'history',
+    'search',
+    'esc',
+    'select',
+    'text',
+    'file',
+    'window',
+    'help',
+  ] as const;
+
+  pkg.contributes.keybindings = segments.flatMap((segment) =>
+    readJson<KeybindingEntry[]>(getCommandPath(segment)),
+  );
+
+  fs.writeFileSync(PKG_JSON_PATH, `${JSON.stringify(pkg, null, 2)}\n`, 'utf8');
+}
+
+main();

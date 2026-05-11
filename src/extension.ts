@@ -1,16 +1,21 @@
 import * as vscode from 'vscode';
-import { getEditorId, setSelectMode, isSelectMode } from './selection';
-import { showMarkSetStatusBar, hideMarkSetStatusBar, disposeMarkSetStatusBar } from './status-bar';
+import { getEditorId, isSelectMode, setSelectMode } from './selection';
+import {
+  createMarkSetStatusBar,
+  disposeMarkSetStatusBar,
+  hideMarkSetStatusBar,
+  showMarkSetStatusBar,
+} from './status-bar';
 
-const diposableList: vscode.Disposable[] = [];
+export function activate(context: vscode.ExtensionContext): void {
+  createMarkSetStatusBar();
 
-export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.utils.commands', async (args: string[]) => {
       for (const command of args) {
         await vscode.commands.executeCommand(command);
       }
-    })
+    }),
   );
 
   context.subscriptions.push(
@@ -23,55 +28,52 @@ export function activate(context: vscode.ExtensionContext) {
       } else {
         showMarkSetStatusBar();
       }
-    })
+    }),
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.selectMode.start', async () => {
-      // switch mode
       setSelectMode(true);
-
       await vscode.commands.executeCommand('vsmacs.selectMode.update');
-    })
+    }),
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand('vsmacs.selectMode.stop', async () => {
-      // switch mode
       setSelectMode(false);
-
       await vscode.commands.executeCommand('vsmacs.selectMode.update');
-    })
+    }),
   );
 
-  diposableList.push(
-    vscode.window.onDidChangeActiveTextEditor(async () => {
-      await vscode.commands.executeCommand('vsmacs.selectMode.update');
-    })
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor(() => {
+      void vscode.commands.executeCommand('vsmacs.selectMode.update');
+    }),
   );
 
-  diposableList.push(
-    vscode.workspace.onDidChangeTextDocument(async () => {
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeTextDocument(() => {
       if (isSelectMode()) {
-        await vscode.commands.executeCommand('vsmacs.selectMode.stop');
+        void vscode.commands.executeCommand('vsmacs.selectMode.stop');
       }
-    })
+    }),
   );
 
-  diposableList.push(
-    vscode.window.onDidChangeTextEditorSelection(async (e) => {
-      // e.textEditor = vscode.window.activeTextEditor;
+  context.subscriptions.push(
+    vscode.window.onDidChangeTextEditorSelection((e) => {
       if (!e.textEditor.selection.isEmpty && !isSelectMode(getEditorId(e.textEditor))) {
-        await vscode.commands.executeCommand('vsmacs.selectMode.start');
+        void vscode.commands.executeCommand('vsmacs.selectMode.start');
       } else if (e.textEditor.selection.isEmpty && isSelectMode(getEditorId(e.textEditor))) {
-        await vscode.commands.executeCommand('vsmacs.selectMode.stop');
+        void vscode.commands.executeCommand('vsmacs.selectMode.stop');
       }
-    })
+    }),
   );
+
+  context.subscriptions.push(new vscode.Disposable(() => disposeMarkSetStatusBar()));
+
+  void vscode.commands.executeCommand('vsmacs.selectMode.update');
 }
 
-export function deactivate() {
-  diposableList.forEach((d) => d.dispose());
-
+export function deactivate(): void {
   disposeMarkSetStatusBar();
 }

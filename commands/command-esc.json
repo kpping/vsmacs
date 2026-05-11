@@ -5,6 +5,7 @@
     "when": "editorTextFocus && selectionAnchorSet"
   },
   {
+    "key": "ctrl+g",
     "command": "editor.debug.action.closeExceptionWidget",
     "when": "exceptionWidgetVisible"
   },

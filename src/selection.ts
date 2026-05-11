@@ -1,19 +1,23 @@
 import * as vscode from 'vscode';
 
-const selectModeMap = new Map();
+const selectModeMap = new Map<string, boolean>();
 
-export function getEditorId(editor = vscode.window.activeTextEditor): string {
-  return `${editor?.viewColumn || 0}${editor?.document.uri.toString()}`;
+export function getEditorId(
+  editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor,
+): string {
+  const uri = editor?.document.uri.toString() ?? '';
+  const column = editor?.viewColumn ?? 0;
+  return `${column}:${uri}`;
 }
 
-export function setSelectMode(value: boolean, editorId = getEditorId()): Map<string, boolean> {
-  return selectModeMap.set(editorId, value);
+export function setSelectMode(value: boolean, editorId = getEditorId()): void {
+  selectModeMap.set(editorId, value);
 }
 
 export function isSelectMode(editorId = getEditorId()): boolean {
   if (!selectModeMap.has(editorId)) {
-    setSelectMode(false, editorId);
+    selectModeMap.set(editorId, false);
   }
 
-  return selectModeMap.get(editorId);
+  return selectModeMap.get(editorId) ?? false;
 }

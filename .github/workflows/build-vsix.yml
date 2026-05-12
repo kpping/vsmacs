@@ -1,0 +1,45 @@
+name: Build VSIX
+
+# Produces a downloadable .vsix as a workflow artifact (no Marketplace token).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-vsix-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2.2.0
+        with:
+          bun-version: "1.2.2"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate keybindings and compile
+        run: bun run generate
+
+      - name: Package extension
+        run: bunx @vscode/vsce@3.9.0 package
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v7
+        with:
+          name: vsmacs-vsix
+          path: "*.vsix"
+          if-no-files-found: error

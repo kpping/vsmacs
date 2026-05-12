@@ -124,6 +124,8 @@ To try the extension in a VS Code window: open this folder, run **Run Extension*
 
 The **Publish extension** workflow (Actions) runs `bun run generate`, then publishes to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/) with [`@vscode/vsce`](https://www.npmjs.com/package/@vscode/vsce). Trigger it manually from the Actions tab, or push a **`v*`** version tag. Add a repository secret **`VSCE_PAT`** with a [Marketplace personal access token](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#create-a-publisher) (scope: **Marketplace → Manage**). Bump `"version"` in `package.json` before publishing a new release; see `CHANGELOG.md` for release notes.
 
+The **Build VSIX** workflow runs the same generate step, runs **`vsce package`**, and uploads the resulting **`.vsix`** as a workflow artifact. It runs on pushes and pull requests to **`main`** or **`master`**, and can be started manually from the Actions tab; open a completed run and download the **vsmacs-vsix** artifact. Install locally with **Extensions: Install from VSIX…** in VS Code.
+
 ## License
 
 MIT. See `package.json` for links, repository, and publisher metadata.

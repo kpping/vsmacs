@@ -1,0 +1,39 @@
+name: Publish extension
+
+# Publishes to the Visual Studio Marketplace. Add repository secret VSCE_PAT
+# (Visual Studio Marketplace personal access token with Marketplace > Manage scope).
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: publish-extension
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.2"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate keybindings and compile
+        run: bun run generate
+
+      - name: Publish to Visual Studio Marketplace
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: bunx @vscode/vsce@3.9.0 publish

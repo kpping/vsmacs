@@ -4,7 +4,7 @@ Emacs-style key bindings for Visual Studio Code. No kill ring, no extra chrome. 
 
 ## Requirements
 
-- [Visual Studio Code](https://code.visualstudio.com/) **1.118** or newer (see `engines.vscode` in `package.json`).
+- [Visual Studio Code](https://code.visualstudio.com/) or [VSCodium](https://vscodium.com/) **1.116** or newer — same as `engines.vscode` in `package.json` (`^1.116.0`). VSCodium’s stable release usually tracks a recent VS Code minor; this floor matches current Codium while still allowing newer VS Code builds.
 
 ## Features
 

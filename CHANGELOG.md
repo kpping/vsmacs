@@ -1,3 +1,7 @@
+## v0.14.1
+
+- **Compatibility:** set `engines.vscode` to **`^1.116.0`** (and align **`@types/vscode`**) so the extension installs on **current VSCodium** (~1.116.x) as well as Visual Studio Code **1.116+**; the previous `^1.118.0` floor was above the latest Codium stable.
+
 ## v0.14.0
 
 - CI: GitHub Action **Publish extension** (`.github/workflows/publish-extension.yml`) — runs `bun run generate` and publishes with **`vsce publish`** on `workflow_dispatch` or when a **`v*`** tag is pushed. Configure repository secret **`VSCE_PAT`** (Visual Studio Marketplace personal access token with Marketplace → Manage).

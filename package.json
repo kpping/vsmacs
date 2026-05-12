@@ -2,12 +2,12 @@
   "name": "vsmacs",
   "displayName": "VSmacs",
   "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "license": "MIT",
   "publisher": "kpping",
   "packageManager": "bun@1.2.2",
   "engines": {
-    "vscode": "^1.118.0",
+    "vscode": "^1.116.0",
     "node": ">=20.19.0"
   },
   "categories": [
@@ -1077,7 +1077,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
     "@types/node": "^22.19.19",
-    "@types/vscode": "^1.118.0",
+    "@types/vscode": "^1.116.0",
     "typescript": "^5.9.3"
   },
   "homepage": "https://github.com/kpping/vsmacs/blob/master/README.md",

@@ -1,3 +1,8 @@
+## v0.14.0
+
+- CI: GitHub Action **Publish extension** (`.github/workflows/publish-extension.yml`) — runs `bun run generate` and publishes with **`vsce publish`** on `workflow_dispatch` or when a **`v*`** tag is pushed. Configure repository secret **`VSCE_PAT`** (Visual Studio Marketplace personal access token with Marketplace → Manage).
+- CI: use **`actions/checkout@v6`** and **`oven-sh/setup-bun@v2.2.0`** so JavaScript actions run on Node.js 24 (avoids the GitHub Actions Node 20 deprecation for those steps).
+
 ## v0.13.0
 
 - Keybindings: **scroll** — `alt+v` (page up), `ctrl+alt+v` (page down; on macOS the binding is `ctrl+v` so paste stays on Command+V).

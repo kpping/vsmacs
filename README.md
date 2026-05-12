@@ -4,7 +4,7 @@ Emacs-style key bindings for Visual Studio Code. No kill ring, no extra chrome. 
 
 ## Requirements
 
-- [Visual Studio Code](https://code.visualstudio.com/) **1.90** or newer (see `engines.vscode` in `package.json`).
+- [Visual Studio Code](https://code.visualstudio.com/) **1.118** or newer (see `engines.vscode` in `package.json`).
 
 ## Features
 
@@ -119,6 +119,10 @@ This repo uses [Bun](https://bun.sh/) for installs and scripts (`packageManager`
 Linting and formatting are handled by **Biome** only (no ESLint or Prettier). The workspace recommends the [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
 
 To try the extension in a VS Code window: open this folder, run **Run Extension** from the Run and Debug view (see `.vscode/launch.json`).
+
+### Publishing (maintainers)
+
+The **Publish extension** workflow (Actions) runs `bun run generate`, then publishes to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/) with [`@vscode/vsce`](https://www.npmjs.com/package/@vscode/vsce). Trigger it manually from the Actions tab, or push a **`v*`** version tag. Add a repository secret **`VSCE_PAT`** with a [Marketplace personal access token](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#create-a-publisher) (scope: **Marketplace → Manage**). Bump `"version"` in `package.json` before publishing a new release; see `CHANGELOG.md` for release notes.
 
 ## License
 

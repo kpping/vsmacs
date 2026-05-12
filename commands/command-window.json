@@ -1,5 +1,9 @@
 [
   {
+    "key": "ctrl+x 1",
+    "command": "workbench.action.maximizeEditorGroup"
+  },
+  {
     "key": "ctrl+x 3",
     "command": "workbench.action.splitEditor"
   },
@@ -14,5 +18,13 @@
   {
     "key": "ctrl+x o",
     "command": "workbench.action.focusNextGroup"
+  },
+  {
+    "key": "ctrl+x left",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "ctrl+x right",
+    "command": "workbench.action.nextEditorInGroup"
   }
 ]

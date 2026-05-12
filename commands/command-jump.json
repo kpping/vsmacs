@@ -28,5 +28,38 @@
     "key": "ctrl+x shift+.",
     "command": "cursorBottom",
     "when": "textInputFocus"
+  },
+  {
+    "key": "alt+shift+,",
+    "command": "cursorTop",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+shift+.",
+    "command": "cursorBottom",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "cursorMove",
+    "args": {
+      "to": "viewPortCenter"
+    },
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+g g",
+    "command": "workbench.action.gotoLine",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+g n",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "editorTextFocus || problemFocus"
+  },
+  {
+    "key": "alt+g p",
+    "command": "editor.action.marker.prevInFiles",
+    "when": "editorTextFocus || problemFocus"
   }
 ]

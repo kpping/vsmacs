@@ -1,3 +1,12 @@
+## v0.13.0
+
+- Keybindings: **scroll** — `alt+v` (page up), `ctrl+alt+v` (page down; on macOS the binding is `ctrl+v` so paste stays on Command+V).
+- Keybindings: **jump** — `ctrl+l` (cursor to viewport center), `alt+g g` (go to line), `alt+g n` / `alt+g p` (next/previous problem in files), `alt+shift+,` / `alt+shift+.` (top/bottom of buffer, same commands as `ctrl+x shift+,` / `ctrl+x shift+.`).
+- Keybindings: **window** — `ctrl+x 1` (maximize editor group), `ctrl+x left` / `ctrl+x right` (previous/next editor in group).
+- Keybindings: **file** — `ctrl+x b` (show all editors).
+- Select mode: page up/down and `alt+shift+,` / `alt+shift+.` variants wired for extending selection when mark mode is on.
+- Generator: include `commands/command-scroll.json` in the merge order (`scroll` segment).
+
 ## v0.12.0
 
 - Document development workflow in the README (Bun scripts, Biome, keybinding generator).

@@ -22,5 +22,9 @@
   {
     "key": "ctrl+x ctrl+b",
     "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+  },
+  {
+    "key": "ctrl+x b",
+    "command": "workbench.action.showAllEditors"
   }
 ]

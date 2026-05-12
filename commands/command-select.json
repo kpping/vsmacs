@@ -162,5 +162,51 @@
     "command": "vsmacs.utils.commands",
     "args": ["vsmacs.selectMode.start", "cursorBottomSelect"],
     "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+shift+,",
+    "command": "cursorTopSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+shift+,",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorTopSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+shift+.",
+    "command": "cursorBottomSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+shift+.",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorBottomSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+alt+v",
+    "mac": "ctrl+v",
+    "command": "cursorPageDownSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "ctrl+alt+v",
+    "mac": "ctrl+v",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorPageDownSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+v",
+    "command": "cursorPageUpSelect",
+    "when": "textInputFocus && vsmacs.selectMode.value"
+  },
+  {
+    "key": "alt+v",
+    "command": "vsmacs.utils.commands",
+    "args": ["vsmacs.selectMode.start", "cursorPageUpSelect"],
+    "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
   }
 ]

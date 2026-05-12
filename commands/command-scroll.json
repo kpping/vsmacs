@@ -1,0 +1,13 @@
+[
+  {
+    "key": "ctrl+alt+v",
+    "mac": "ctrl+v",
+    "command": "cursorPageDown",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+v",
+    "command": "cursorPageUp",
+    "when": "textInputFocus"
+  }
+]

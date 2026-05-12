@@ -22,6 +22,7 @@ function main(): void {
   const segments = [
     'down',
     'jump',
+    'scroll',
     'left',
     'right',
     'up',

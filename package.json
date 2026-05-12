@@ -2,7 +2,7 @@
   "name": "vsmacs",
   "displayName": "VSmacs",
   "description": "Emacs Key Bindings for Visual Studio Code. No Kill Ring. No Fancy Things.",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "license": "MIT",
   "publisher": "kpping",
   "packageManager": "bun@1.2.2",
@@ -133,6 +133,50 @@
       {
         "key": "ctrl+x shift+.",
         "command": "cursorBottom",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+shift+,",
+        "command": "cursorTop",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+shift+.",
+        "command": "cursorBottom",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+l",
+        "command": "cursorMove",
+        "args": {
+          "to": "viewPortCenter"
+        },
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+g g",
+        "command": "workbench.action.gotoLine",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+g n",
+        "command": "editor.action.marker.nextInFiles",
+        "when": "editorTextFocus || problemFocus"
+      },
+      {
+        "key": "alt+g p",
+        "command": "editor.action.marker.prevInFiles",
+        "when": "editorTextFocus || problemFocus"
+      },
+      {
+        "key": "ctrl+alt+v",
+        "mac": "ctrl+v",
+        "command": "cursorPageDown",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+v",
+        "command": "cursorPageUp",
         "when": "textInputFocus"
       },
       {
@@ -756,6 +800,64 @@
         "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
       },
       {
+        "key": "alt+shift+,",
+        "command": "cursorTopSelect",
+        "when": "textInputFocus && vsmacs.selectMode.value"
+      },
+      {
+        "key": "alt+shift+,",
+        "command": "vsmacs.utils.commands",
+        "args": [
+          "vsmacs.selectMode.start",
+          "cursorTopSelect"
+        ],
+        "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+      },
+      {
+        "key": "alt+shift+.",
+        "command": "cursorBottomSelect",
+        "when": "textInputFocus && vsmacs.selectMode.value"
+      },
+      {
+        "key": "alt+shift+.",
+        "command": "vsmacs.utils.commands",
+        "args": [
+          "vsmacs.selectMode.start",
+          "cursorBottomSelect"
+        ],
+        "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+      },
+      {
+        "key": "ctrl+alt+v",
+        "mac": "ctrl+v",
+        "command": "cursorPageDownSelect",
+        "when": "textInputFocus && vsmacs.selectMode.value"
+      },
+      {
+        "key": "ctrl+alt+v",
+        "mac": "ctrl+v",
+        "command": "vsmacs.utils.commands",
+        "args": [
+          "vsmacs.selectMode.start",
+          "cursorPageDownSelect"
+        ],
+        "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+      },
+      {
+        "key": "alt+v",
+        "command": "cursorPageUpSelect",
+        "when": "textInputFocus && vsmacs.selectMode.value"
+      },
+      {
+        "key": "alt+v",
+        "command": "vsmacs.utils.commands",
+        "args": [
+          "vsmacs.selectMode.start",
+          "cursorPageUpSelect"
+        ],
+        "when": "textInputFocus && editorHasSelection && !vsmacs.selectMode.value"
+      },
+      {
         "key": "alt+w",
         "command": "vsmacs.utils.commands",
         "args": [
@@ -867,6 +969,14 @@
         "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
       },
       {
+        "key": "ctrl+x b",
+        "command": "workbench.action.showAllEditors"
+      },
+      {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.maximizeEditorGroup"
+      },
+      {
         "key": "ctrl+x 3",
         "command": "workbench.action.splitEditor"
       },
@@ -881,6 +991,14 @@
       {
         "key": "ctrl+x o",
         "command": "workbench.action.focusNextGroup"
+      },
+      {
+        "key": "ctrl+x left",
+        "command": "workbench.action.previousEditorInGroup"
+      },
+      {
+        "key": "ctrl+x right",
+        "command": "workbench.action.nextEditorInGroup"
       },
       {
         "key": "ctrl+x space",
